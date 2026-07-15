@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Dhameliya Avadh Jaysukhbhai",
+    "email": "dhameliyaavadh592@gmail.com",
+    "phone": "9265177693",
+    "serviceType": "Stress",
+    "message": "sdsd",
+    "_id": "fb_v2lpo65he",
+    "createdAt": "2026-07-13T13:09:26.207Z"
+  },
+  {
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "1234567890",
+    "serviceType": "Counseling",
+    "message": "This is a test message to verify the contact us email trigger.",
+    "_id": "fb_zmuwyxn7e",
+    "createdAt": "2026-07-13T13:13:15.213Z"
+  },
+  {
+    "name": "Dhameliya Avadh Jaysukhbhai",
+    "email": "dhameliyaavadh592@gmail.com",
+    "phone": "0926517769",
+    "serviceType": "Stress",
+    "message": "12121212",
+    "_id": "fb_947cfiizf",
+    "createdAt": "2026-07-15T06:40:49.444Z"
+  },
+  {
+    "name": "Avadh Dhameliya",
+    "email": "dhameliyaavadh592@gmail.com",
+    "phone": "1212121212",
+    "serviceType": "Counseling",
+    "message": "dad",
+    "_id": "fb_javnxvs1l",
+    "createdAt": "2026-07-15T06:41:40.601Z"
+  },
+  {
+    "name": "Dhameliya Avadh Jaysukhbhai",
+    "email": "dhameliyaavadh592@gmail.com",
+    "phone": "0926517769",
+    "serviceType": "Counseling",
+    "message": "kkp",
+    "_id": "fb_oh9yo1vlr",
+    "createdAt": "2026-07-15T06:43:40.160Z"
+  },
+  {
+    "name": "official",
+    "email": "officialsmc@department.gov.in",
+    "phone": "926517769",
+    "serviceType": "Counseling",
+    "message": "dwa",
+    "_id": "fb_byke9dvcf",
+    "createdAt": "2026-07-15T06:46:45.480Z"
+  }
+]

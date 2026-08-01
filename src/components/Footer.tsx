@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, ShieldCheck, Heart, AlertCircle, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, ShieldCheck } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 
 export default function Footer() {
@@ -132,45 +132,19 @@ export default function Footer() {
 
         </div>
 
-        {/* Crisis Resource Disclaimer Bar - Fully Clickable Emergency Helplines */}
-        <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-[#8CA899]/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-[#8CA899]">
-          <div className="flex items-start space-x-3">
-            <AlertCircle className="w-5 h-5 text-[#D98A2B] shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-white block">Crisis Helpline Disclaimer:</span>
-              <span>
-                If you or someone you know is in immediate danger or experiencing a mental health crisis, please reach out to national emergency services immediately.
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-2 shrink-0">
-            <a
-              href="tel:14416"
-              className="bg-[#D98A2B]/20 hover:bg-[#D98A2B]/40 text-[#D98A2B] hover:text-white px-3 py-1.5 rounded-lg border border-[#D98A2B]/30 font-semibold text-[11px] transition-colors flex items-center"
-            >
-              Tele-MANAS: 14416
-              <ExternalLink className="w-3 h-3 ml-1" />
-            </a>
-            <a
-              href="tel:+919999666555"
-              className="bg-[#D98A2B]/20 hover:bg-[#D98A2B]/40 text-[#D98A2B] hover:text-white px-3 py-1.5 rounded-lg border border-[#D98A2B]/30 font-semibold text-[11px] transition-colors flex items-center"
-            >
-              Vandrevala: +91 9999 666 555
-              <ExternalLink className="w-3 h-3 ml-1" />
-            </a>
-          </div>
-        </div>
-
-        {/* Copyright & Additional Navigation */}
-        <div className="mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#8CA899]">
+        {/* Copyright & Developed By */}
+        <div className="mt-8 pt-6 border-t border-[#8CA899]/20 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8CA899]">
           <p>© {new Date().getFullYear()} N. Dhanani Counseling. All rights reserved.</p>
-          <div className="flex space-x-4 mt-2 sm:mt-0">
-            <Link href="/faq" className="hover:text-white transition-colors">Confidential Care</Link>
-            <span>•</span>
-            <Link href="/about" className="hover:text-white transition-colors">Evidence-Based Practice</Link>
-            <span>•</span>
-            <Link href="/contact" className="hover:text-white transition-colors">Mumbai, India</Link>
-          </div>
+          <a
+            href="https://portfolio-avadh.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 sm:mt-0 hover:text-white transition-colors flex items-center space-x-1.5 font-medium"
+          >
+            <span>Developed & Managed by</span>
+            <span className="font-bold text-white hover:text-[#D98A2B] transition-colors">AD</span>
+            <span className="w-2 h-2 rounded-full bg-red-500 inline-block animate-pulse"></span>
+          </a>
         </div>
       </div>
     </footer>

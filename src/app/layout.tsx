@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, Caveat, Alex_Brush } from "next/font/google";
+import { Inter, Fraunces, Caveat, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppBubble from "@/components/WhatsAppBubble";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -10,8 +12,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,9 +32,26 @@ const alexBrush = Alex_Brush({
 });
 
 export const metadata: Metadata = {
-  title: "N. Dhanani | Professional Family Counselor & Public Speaker",
-  description: "Experienced family counselor, stress consultant, parenting guide, and public speaker helping individuals and families resolve stress, build stronger relationships, and achieve self-improvement.",
-  keywords: ["Family Counselor", "Stress Management", "Parenting Coach", "Self-Improvement", "Public Speaker", "N. Dhanani", "Counseling Sessions"],
+  title: "N. Dhanani | Professional Family Counselor & Life Coach in Mumbai",
+  description: "Guiding families through stress back to calm. 6+ years of evidence-based counseling for parenting overwhelm, marriage repair, corporate burnout, and life coaching.",
+  keywords: [
+    "Family Counselor Mumbai",
+    "Parenting Coach",
+    "Marriage Relationship Repair",
+    "Stress Management",
+    "Nikunj Dhanani",
+    "Life Coaching Mumbai",
+    "Counselor Near Me"
+  ],
+  authors: [{ name: "Nikunj Dhanani" }],
+  openGraph: {
+    title: "N. Dhanani | Family Counselor & Life Coach",
+    description: "Guiding families through stress, back to calm. 6+ years experience, 80+ families & leaders across India.",
+    url: "https://nikunj-portfolio-ten.vercel.app",
+    siteName: "N. Dhanani Counseling",
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -41,11 +60,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} ${caveat.variable} ${alexBrush.variable} scroll-smooth`}>
-      <body className="flex flex-col min-h-screen bg-background text-foreground">
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} ${caveat.variable} ${alexBrush.variable} scroll-smooth`}
+    >
+      <body className="flex flex-col min-h-screen bg-warm-linen text-ink-navy selection:bg-dusty-sky/30">
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pt-20">{children}</main>
         <Footer />
+        <WhatsAppBubble />
+        <MobileStickyCTA />
       </body>
     </html>
   );

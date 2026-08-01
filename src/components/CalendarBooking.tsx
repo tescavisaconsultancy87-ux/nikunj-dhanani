@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Clock, CalendarDays } from "lucide-react";
+import LeafMotif from "@/components/LeafMotif";
 
 interface CalendarBookingProps {
   selectedDate: Date | null;
@@ -12,7 +13,7 @@ interface CalendarBookingProps {
 
 const timeSlots = [
   "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-  "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+  "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM"
 ];
 
 const monthNames = [
@@ -111,14 +112,13 @@ export default function CalendarBooking({
     const newDate = new Date(currentYear, currentMonth, day);
     onDateSelect(newDate);
 
-    // If the selectedTime is in the past on this new date, clear it
     if (selectedTime && checkIsPastTime(newDate, selectedTime)) {
       onTimeSelect("");
     }
   };
 
   const formatSelectedDate = () => {
-    if (!selectedDate) return "Choose a date above";
+    if (!selectedDate) return "Please choose a date above";
     return selectedDate.toLocaleDateString("en-IN", {
       weekday: "short",
       day: "numeric",
@@ -128,41 +128,43 @@ export default function CalendarBooking({
   };
 
   return (
-    <div className="bg-white border border-primary-200 rounded-2xl p-5 shadow-sm">
+    <div className="bg-white border border-[#0B3C2D]/15 rounded-2xl p-5 md:p-6 shadow-md">
       <div className="flex items-center space-x-2 mb-4">
-        <CalendarDays className="w-4 h-4 text-accent-gold" />
-        <h3 className="text-sm font-bold text-primary-900 font-display">Pick a Date</h3>
+        <LeafMotif className="w-5 h-5 text-[#D98A2B]" />
+        <h3 className="text-base font-bold text-[#0B3C2D] font-serif-display">Select Session Date</h3>
       </div>
 
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3 bg-[#FAF7F2] px-3 py-2 rounded-xl">
         <button
+          type="button"
           onClick={prevMonth}
-          className="w-8 h-8 rounded-full hover:bg-primary-100 flex items-center justify-center transition-colors"
+          className="w-8 h-8 rounded-full hover:bg-[#8CA899]/20 flex items-center justify-center transition-colors text-[#0B3C2D]"
           aria-label="Previous month"
         >
-          <ChevronLeft className="w-4 h-4 text-primary-600" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
-        <span className="text-sm font-bold text-primary-900 font-display">
+        <span className="text-sm font-bold text-[#0B3C2D] font-serif-display">
           {monthNames[currentMonth]} {currentYear}
         </span>
         <button
+          type="button"
           onClick={nextMonth}
-          className="w-8 h-8 rounded-full hover:bg-primary-100 flex items-center justify-center transition-colors"
+          className="w-8 h-8 rounded-full hover:bg-[#8CA899]/20 flex items-center justify-center transition-colors text-[#0B3C2D]"
           aria-label="Next month"
         >
-          <ChevronRight className="w-4 h-4 text-primary-600" />
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-1 mb-1">
         {dayNames.map((d) => (
-          <div key={d} className="text-center text-[10px] font-bold text-primary-400 uppercase tracking-wider py-1">
+          <div key={d} className="text-center text-[11px] font-bold text-ink-light uppercase tracking-wider py-1">
             {d}
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-1 mb-3">
+      <div className="grid grid-cols-7 gap-1 mb-4">
         {Array.from({ length: firstDayOfMonth }).map((_, i) => (
           <div key={`e-${i}`} />
         ))}
@@ -174,16 +176,17 @@ export default function CalendarBooking({
           return (
             <button
               key={day}
+              type="button"
               disabled={disabled}
               onClick={() => handleDayClick(day)}
-              className={`w-full aspect-square rounded-lg text-xs font-semibold flex items-center justify-center transition-all duration-150 ${
+              className={`w-full aspect-square rounded-xl text-xs font-semibold flex items-center justify-center transition-all duration-150 ${
                 selected
-                  ? "bg-accent-navy text-white shadow-sm"
+                  ? "bg-[#0B3C2D] text-white shadow-md font-bold scale-105"
                   : todayMarker
-                  ? "border border-accent-gold text-accent-gold bg-accent-gold-light"
+                  ? "border border-[#D98A2B] text-[#D98A2B] bg-[#D98A2B]/10"
                   : disabled
-                  ? "text-primary-200 cursor-not-allowed"
-                  : "text-primary-700 hover:bg-primary-100 hover:text-primary-900"
+                  ? "text-ink-light/40 cursor-not-allowed bg-[#FAF7F2]/40"
+                  : "text-deep-ink hover:bg-[#8CA899]/20 hover:text-[#0B3C2D]"
               }`}
             >
               {day}
@@ -192,32 +195,33 @@ export default function CalendarBooking({
         })}
       </div>
 
-      <div className="flex items-center space-x-2 mb-3 px-1 py-1.5 bg-primary-50 rounded-lg">
-        <CalendarDays className="w-3.5 h-3.5 text-accent-gold shrink-0" />
-        <span className="text-xs font-semibold text-primary-700">
+      <div className="flex items-center space-x-2 mb-4 px-3 py-2 bg-[#FAF7F2] rounded-xl border border-[#0B3C2D]/10">
+        <CalendarDays className="w-4 h-4 text-[#D98A2B] shrink-0" />
+        <span className="text-xs font-semibold text-[#0B3C2D]">
           {formatSelectedDate()}
         </span>
       </div>
 
-      <div className="border-t border-primary-100 pt-3">
-        <div className="flex items-center space-x-2 mb-2">
-          <Clock className="w-3.5 h-3.5 text-accent-gold" />
-          <span className="text-[11px] font-bold text-primary-600 uppercase tracking-wider">Pick a Time</span>
+      <div className="border-t border-[#0B3C2D]/10 pt-4">
+        <div className="flex items-center space-x-2 mb-3">
+          <Clock className="w-4 h-4 text-[#D98A2B]" />
+          <span className="text-xs font-bold text-[#0B3C2D] uppercase tracking-wider">Select Available Time Slot</span>
         </div>
-        <div className="grid grid-cols-4 gap-1.5">
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-2">
           {timeSlots.map((time) => {
             const isPast = checkIsPastTime(selectedDate, time);
             return (
               <button
                 key={time}
+                type="button"
                 disabled={isPast}
                 onClick={() => onTimeSelect(time)}
-                className={`py-1.5 px-1 rounded-lg text-[11px] font-semibold transition-all duration-150 border ${
+                className={`py-2 px-2 rounded-xl text-xs font-semibold transition-all duration-150 border ${
                   selectedTime === time
-                    ? "bg-accent-navy text-white border-accent-navy shadow-sm"
+                    ? "bg-[#D98A2B] text-white border-[#D98A2B] shadow-sm font-bold"
                     : isPast
-                    ? "border-primary-100 text-primary-200 cursor-not-allowed bg-primary-50/50"
-                    : "border-primary-200 text-primary-600 hover:border-accent-navy/30 hover:bg-primary-50"
+                    ? "border-[#0B3C2D]/10 text-ink-light/40 cursor-not-allowed bg-[#FAF7F2]/40"
+                    : "border-[#0B3C2D]/15 text-deep-ink hover:border-[#0B3C2D] hover:bg-[#FAF7F2]"
                 }`}
               >
                 {time}
@@ -226,7 +230,7 @@ export default function CalendarBooking({
           })}
         </div>
         {!selectedTime && (
-          <p className="text-[10px] text-primary-400 mt-2 text-center">Select a time slot above</p>
+          <p className="text-[11px] text-ink-light mt-3 text-center">Select an available slot to proceed</p>
         )}
       </div>
     </div>

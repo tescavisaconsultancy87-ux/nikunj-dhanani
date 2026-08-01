@@ -2,51 +2,51 @@
 
 @theme {
   --font-sans: var(--font-inter), sans-serif;
-  --font-display: var(--font-outfit), sans-serif;
+  --font-display: var(--font-fraunces), serif;
   --font-signature: var(--font-alex-brush), var(--font-caveat), cursive;
 
-  /* ── Clean Neutral Palette (cool-leaning, masculine) ── */
-  --color-primary-50: #f7f7f6;
-  --color-primary-100: #eeedea;
-  --color-primary-150: #e4e2dc;
-  --color-primary-200: #d5d2ca;
-  --color-primary-300: #b8b3a8;
-  --color-primary-400: #9b9588;
-  --color-primary-500: #7e786c;
-  --color-primary-550: #6f6a5f;
-  --color-primary-600: #5d5850;
-  --color-primary-700: #4d4942;
-  --color-primary-800: #3d3a34;
-  --color-primary-850: #312e2a;
-  --color-primary-900: #1f1d1a;
+  /* ── N. Dhanani Brand Palette: Deep Emerald & Ochre Amber ── */
+  --color-emerald-deep: #0B3C2D;
+  --color-emerald-hover: #07291f;
+  --color-emerald-light: #e4eee9;
+  
+  --color-[#D98A2B]: #D98A2B;
+  --color-ochre-hover: #bd7522;
+  --color-ochre-light: #fdf5ea;
 
-  /* ── Deep Navy — Primary Accent (masculine, trustworthy, premium) ── */
-  --color-accent-navy: #1e3a5f;
-  --color-accent-navy-hover: #152d4a;
-  --color-accent-navy-light: #e8ecf1;
+  --color-soft-linen: #F8F4EE;
+  --color-soft-ivory: #FFFDF9;
+  
+  --color-dusty-sage: #8CA899;
+  --color-dusty-sage-light: #eef4f1;
 
-  /* ── Steel Blue — Secondary Accent (calm, growth) ── */
-  --color-accent-steel: #5a7c96;
-  --color-accent-steel-hover: #4a6a82;
+  --color-deep-ink: #13221C;
+  --color-ink-muted: #43544d;
+  --color-ink-light: #7b8d86;
 
-  /* ── Warm Gold — Premium Trust Accent (pairs with navy) ── */
-  --color-accent-gold: #b8943c;
-  --color-accent-gold-light: #f2e8c9;
-  --color-accent-gold-hover: #9a7b30;
+  --color-sage: #8CA899;
+  --color-sage-light: #eef4f1;
 
-  /* ── Admin Dashboard Metric Colors ── */
-  --color-accent-teal: #4a9e95;
-  --color-accent-amber: #d4a054;
-  --color-accent-rose: #d47a7a;
-  --color-accent-mint: #7ab89a;
+  /* Legacy utility bindings mapped to new palette */
+  --color-accent-navy: #0B3C2D;
+  --color-accent-navy-hover: #07291f;
+  --color-accent-navy-light: #e4eee9;
+  --color-accent-gold: #D98A2B;
+  --color-accent-steel: #8CA899;
+  --color-primary-900: #13221C;
+  --color-primary-800: #0B3C2D;
+  --color-primary-700: #13221C;
+  --color-primary-500: #43544d;
+  --color-primary-100: #F8F4EE;
+  --color-primary-50: #FFFDF9;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1f1d1a;
-  --card-bg: #ffffff;
-  --card-border: #d5d2ca;
-  --stat-bg: #f7f7f6;
+  --background: #F8F4EE;
+  --foreground: #13221C;
+  --card-bg: #FFFFFF;
+  --card-border: #E8E2D5;
+  --stat-bg: #FFFDF9;
 }
 
 body {
@@ -61,22 +61,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
 }
 
+.font-serif-display {
+  font-family: var(--font-fraunces), serif;
+}
+
 .font-signature {
-  font-family: var(--font-alex-brush), var(--font-caveat), "Alex Brush", "Caveat", cursive !important;
+  font-family: var(--font-alex-brush), var(--font-caveat), cursive !important;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #F8F4EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #b8b3a8;
+  background: #8CA899;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9b9588;
+  background: #0B3C2D;
 }
 
 .hover-lift {
@@ -84,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(30, 58, 95, 0.08);
+  box-shadow: 0 12px 30px rgba(11, 60, 45, 0.08);
 }
 
 .glow-btn {
@@ -102,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.25),
     transparent
   );
   transition: all 0.5s ease;
@@ -112,23 +116,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(248, 244, 238, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(213, 210, 202, 0.4);
+  border-bottom: 1px solid rgba(11, 60, 45, 0.08);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(213, 210, 202, 0.5);
+  border: 1px solid rgba(11, 60, 45, 0.08);
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -146,27 +150,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-fade-up {
-  opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
-.delay-100 {
-  animation-delay: 100ms;
-}
-
-.delay-200 {
-  animation-delay: 200ms;
-}
-
-.delay-300 {
-  animation-delay: 300ms;
-}
-
-.delay-400 {
-  animation-delay: 400ms;
-}
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }

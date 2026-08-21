@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Star,
   ArrowRight,
@@ -147,10 +148,13 @@ export default function HomePage() {
                 
                 {/* Hero Card Image Showcase using ndhanani.png */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md group">
-                  <img
+                  <Image
                     src="/ndhanani.png"
                     alt="Nikunj Dhanani Counselor"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C2D]/60 via-transparent to-transparent"></div>
                   
@@ -184,7 +188,7 @@ export default function HomePage() {
               {/* Trust Badge Pill */}
               <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0B3C2D]/10 border border-[#0B3C2D]/15 text-[#0B3C2D] text-xs font-semibold">
                 <LeafMotif className="w-4 h-4 text-[#D98A2B]" />
-                <span>Personal Practitioner · Mumbai & Nationwide Online</span>
+                <span>Personal Practitioner · Surat & Nationwide Online</span>
               </div>
 
               {/* Headline */}
@@ -236,12 +240,15 @@ export default function HomePage() {
                 {/* Real Photographic Avatars */}
                 <div className="flex -space-x-2.5">
                   {realAvatars.map((person, idx) => (
-                    <img
-                      key={idx}
-                      src={person.url}
-                      alt={person.name}
-                      className="w-8 h-8 rounded-full object-cover border-2 border-[#F8F4EE] shadow-sm hover:scale-110 transition-transform"
-                    />
+                    <div key={idx} className="relative w-8 h-8">
+                      <Image
+                        src={person.url}
+                        alt={person.name}
+                        fill
+                        sizes="32px"
+                        className="rounded-full object-cover border-2 border-[#F8F4EE] shadow-sm hover:scale-110 transition-transform"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -357,11 +364,13 @@ export default function HomePage() {
             {/* Service 1 */}
             <div className="bg-[#F8F4EE] rounded-3xl p-8 border border-[#0B3C2D]/15 flex flex-col justify-between hover-lift">
               <div className="space-y-6">
-                <div className="w-full h-44 rounded-2xl overflow-hidden shadow-sm">
-                  <img
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden shadow-sm">
+                  <Image
                     src="/service_parenting.png"
                     alt="Parenting Coaching"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div>
@@ -408,11 +417,13 @@ export default function HomePage() {
                 Most Requested
               </span>
               <div className="space-y-6">
-                <div className="w-full h-44 rounded-2xl overflow-hidden shadow-sm">
-                  <img
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden shadow-sm">
+                  <Image
                     src="/service_relationship.png"
                     alt="Relationship Repair"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div>
@@ -456,11 +467,13 @@ export default function HomePage() {
             {/* Service 3 */}
             <div className="bg-[#F8F4EE] rounded-3xl p-8 border border-[#0B3C2D]/15 flex flex-col justify-between hover-lift">
               <div className="space-y-6">
-                <div className="w-full h-44 rounded-2xl overflow-hidden shadow-sm">
-                  <img
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden shadow-sm">
+                  <Image
                     src="/service_counselling.png"
                     alt="Counselling & Life Coaching"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div>
@@ -629,11 +642,15 @@ export default function HomePage() {
 
             <div className="flex items-center justify-between pt-6 border-t border-[#0B3C2D]/10">
               <div className="flex items-center space-x-3">
-                <img
-                  src={testimonials[activeTestimonial].avatar}
-                  alt={testimonials[activeTestimonial].author}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-[#0B3C2D]/20 shadow-sm"
-                />
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src={testimonials[activeTestimonial].avatar}
+                    alt={testimonials[activeTestimonial].author}
+                    fill
+                    sizes="48px"
+                    className="rounded-full object-cover border-2 border-[#0B3C2D]/20 shadow-sm"
+                  />
+                </div>
                 <div>
                   <span className="text-base font-bold text-[#0B3C2D] block">
                     {testimonials[activeTestimonial].author}
@@ -685,11 +702,15 @@ export default function HomePage() {
             
             <div className="lg:col-span-5">
               <div className="bg-white rounded-3xl p-8 border border-[#0B3C2D]/10 shadow-lg text-center space-y-4">
-                <img
-                  src="/ndhanani_2nd.png"
-                  alt="Nikunj Dhanani Counselor"
-                  className="w-36 h-36 rounded-full object-cover mx-auto border-4 border-[#F8F4EE] shadow-md hover:scale-105 transition-transform duration-300"
-                />
+                <div className="relative w-36 h-36 mx-auto">
+                  <Image
+                    src="/ndhanani_2nd.png"
+                    alt="Nikunj Dhanani Counselor"
+                    fill
+                    sizes="144px"
+                    className="rounded-full object-cover border-4 border-[#F8F4EE] shadow-md hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <div>
                   <h3 className="text-2xl font-serif-display font-bold text-[#0B3C2D]">
                     Nikunj Dhanani
@@ -699,7 +720,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <p className="text-xs text-ink-muted leading-relaxed">
-                  Based in Mumbai. Specializing in family stress dynamics, relationship repair, and executive mental wellness.
+                  Based in Surat. Specializing in family stress dynamics, relationship repair, and executive mental wellness.
                 </p>
                 <div className="pt-2 flex flex-wrap justify-center gap-2 text-[11px] text-[#0B3C2D]">
                   <span className="px-3 py-1 bg-[#F8F4EE] rounded-full border border-[#0B3C2D]/10">English</span>
@@ -762,11 +783,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="h-44 overflow-hidden">
-                <img
+              <div className="relative h-44 overflow-hidden">
+                <Image
                   src="/1st_work.png"
                   alt="Leading Through Uncertainty"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">
@@ -783,11 +806,13 @@ export default function HomePage() {
             </div>
 
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="h-44 overflow-hidden">
-                <img
+              <div className="relative h-44 overflow-hidden">
+                <Image
                   src="/2nd_work.png"
                   alt="Modern Parenting & Teen Anxiety"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">
@@ -804,11 +829,13 @@ export default function HomePage() {
             </div>
 
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="h-44 overflow-hidden">
-                <img
+              <div className="relative h-44 overflow-hidden">
+                <Image
                   src="/3rd_work.png"
                   alt="Building Emotional Balance"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">
@@ -856,7 +883,7 @@ export default function HomePage() {
               <Award className="w-6 h-6 text-[#D98A2B]" />
               <div className="text-left">
                 <span className="text-xs font-bold text-[#0B3C2D] block">6+ Years Credibility</span>
-                <span className="text-[11px] text-ink-muted">Mumbai Practice & Online Nationwide</span>
+                <span className="text-[11px] text-ink-muted">Surat Practice & Online Nationwide</span>
               </div>
             </div>
 
@@ -888,7 +915,7 @@ export default function HomePage() {
             </Link>
 
             <a
-              href="https://wa.me/919870000000?text=Hi%20Nikunj,%20I'd%20like%20to%20inquire%20about%20a%20session."
+              href="https://wa.me/919925060609?text=Hi%20Nikunj,%20I'd%20like%20to%20inquire%20about%20a%20session."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 rounded-full border border-[#8CA899]/40 text-white hover:bg-white/10 font-semibold text-base transition-colors"

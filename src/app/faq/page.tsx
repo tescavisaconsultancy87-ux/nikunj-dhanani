@@ -192,7 +192,7 @@ export default function FAQPage() {
                 Book a Session
               </Link>
               <a
-                href="https://wa.me/919870000000?text=Hi%20Nikunj,%20I%20have%20a%20question%20before%20booking."
+                href="https://wa.me/919925060609?text=Hi%20Nikunj,%20I%20have%20a%20question%20before%20booking."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 rounded-full border border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#F8F4EE] text-xs font-bold transition-colors"

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle2, Shield, Heart, Sparkles, BookOpen } from "lucide-react";
 
 export default function FamilyGuidePage() {
@@ -25,10 +26,13 @@ export default function FamilyGuidePage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="aspect-square w-full rounded-[2.5rem] p-2 bg-white border border-primary-200/60 shadow-md overflow-hidden">
               <div className="w-full h-full rounded-[2rem] overflow-hidden bg-primary-50 border border-primary-100 relative">
-                <img
+                <Image
                   src="/2nd_work.png"
                   alt="Family Communication Guide"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
                 />
               </div>
             </div>

@@ -112,19 +112,19 @@ export default function Footer() {
               <li>
                 <Link href="/contact#booking" className="flex items-start space-x-3 group hover:text-white transition-colors">
                   <MapPin className="w-4 h-4 text-[#D98A2B] shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>Mumbai, Maharashtra, India (Online Sessions Available Nationwide)</span>
+              <span>Mota Varachha, Surat, Gujarat, India (Online Sessions Available Nationwide)</span>
                 </Link>
               </li>
               <li>
-                <a href="tel:+919870000000" className="flex items-center space-x-3 group hover:text-white transition-colors">
+                <a href="tel:+919925060609" className="flex items-center space-x-3 group hover:text-white transition-colors">
                   <Phone className="w-4 h-4 text-[#D98A2B] shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>+91 98700 00000</span>
+                  <span>+91 99250 60609</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@ndhanani.com" className="flex items-center space-x-3 group hover:text-white transition-colors">
+                <a href="mailto:ndhanani85@gmail.com" className="flex items-center space-x-3 group hover:text-white transition-colors">
                   <Mail className="w-4 h-4 text-[#D98A2B] shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>contact@ndhanani.com</span>
+                  <span>ndhanani85@gmail.com</span>
                 </a>
               </li>
             </ul>

@@ -24,7 +24,7 @@ export default function MobileStickyCTA() {
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#0F3D3E]/10 p-3 px-4 shadow-2xl flex items-center justify-between space-x-3 animate-fade-up">
       <a
-        href="https://wa.me/919870000000?text=Hi%20Nikunj,%20I'd%20like%20to%20ask%20a%20quick%20question."
+        href="https://wa.me/919925060609?text=Hi%20Nikunj,%20I'd%20like%20to%20ask%20a%20quick%20question."
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 inline-flex items-center justify-center py-2.5 px-3 rounded-xl border border-[#0F3D3E]/20 text-[#0F3D3E] font-medium text-xs sm:text-sm bg-warm-linen hover:bg-[#8FB8B0]/20 transition-colors"

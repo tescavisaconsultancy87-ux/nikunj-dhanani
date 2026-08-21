@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, Award, Heart, BookOpen, Calendar, ArrowRight, CheckCircle2, Globe, Sparkles, UserCheck, Lock } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -48,11 +49,16 @@ export default function AboutPage() {
         <ScrollReveal direction="up" delay={100}>
           <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#0B3C2D]/10 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4 text-center">
-              <img
-                src="/ndhanani_2nd.png"
-                alt="Nikunj Dhanani Counselor"
-                className="w-44 h-44 rounded-full object-cover mx-auto border-4 border-[#F8F4EE] shadow-xl mb-4 hover:scale-105 transition-transform duration-300"
-              />
+              <div className="relative w-44 h-44 mx-auto mb-4">
+                <Image
+                  src="/ndhanani_2nd.png"
+                  alt="Nikunj Dhanani Counselor"
+                  fill
+                  sizes="176px"
+                  className="rounded-full object-cover border-4 border-[#F8F4EE] shadow-xl hover:scale-105 transition-transform duration-300"
+                  priority
+                />
+              </div>
               <h1 className="text-2xl font-serif-display font-bold text-[#0B3C2D]">
                 Nikunj Dhanani
               </h1>
@@ -93,11 +99,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((img, idx) => (
                 <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#0B3C2D]/10 shadow-sm hover-lift group">
-                  <div className="h-44 overflow-hidden">
-                    <img
+                  <div className="relative h-44 overflow-hidden">
+                    <Image
                       src={img.src}
                       alt={img.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-3 text-center">

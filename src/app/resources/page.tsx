@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BookOpen, Search, Clock, ArrowRight, Tag, PhoneCall, Download, FileText } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -143,8 +144,8 @@ export default function ResourcesPage() {
               {downloadableGuides.map((guide, idx) => (
                 <div key={idx} className="bg-white rounded-3xl p-6 border border-[#0B3C2D]/10 shadow-md hover-lift flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
-                    <div className="h-52 rounded-2xl overflow-hidden shadow-sm">
-                      <img src={guide.image} alt={guide.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                    <div className="relative h-52 rounded-2xl overflow-hidden shadow-sm">
+                      <Image src={guide.image} alt={guide.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
                     </div>
                     <span className="inline-block px-3 py-1 rounded-full bg-[#D98A2B]/15 text-[#D98A2B] text-[11px] font-bold">
                       {guide.tag} · {guide.pages}

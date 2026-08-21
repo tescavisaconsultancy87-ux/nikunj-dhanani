@@ -4,7 +4,7 @@ import React from "react";
 import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppBubble() {
-  const whatsappUrl = "https://wa.me/919870000000?text=Hi%20Nikunj,%20I%20would%20like%20to%20inquire%20about%20a%20counseling%20session.";
+  const whatsappUrl = "https://wa.me/919925060609?text=Hi%20Nikunj,%20I'd%20like%20to%20ask%20a%20quick%20question.";
 
   return (
     <a

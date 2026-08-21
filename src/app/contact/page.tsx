@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import CalendarBooking from "@/components/CalendarBooking";
-import { Phone, Mail, MapPin, ShieldCheck, CheckCircle2, AlertCircle, MessageCircle, Clock, CalendarDays, Lock } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, CheckCircle2, MessageCircle, Clock, CalendarDays, Lock } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -87,7 +87,7 @@ function ContactBookingContent() {
                     <MapPin className="w-4 h-4 text-[#D98A2B] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#0B3C2D]">Practice Location:</strong>
-                      <span>Mumbai, Maharashtra (Online Nationwide via Zoom)</span>
+                      <span>Mota Varachha, Surat, Gujarat (Online Nationwide via Zoom)</span>
                     </div>
                   </div>
 
@@ -95,7 +95,7 @@ function ContactBookingContent() {
                     <Phone className="w-4 h-4 text-[#D98A2B] shrink-0" />
                     <div>
                       <strong className="block text-[#0B3C2D]">Phone / WhatsApp:</strong>
-                      <span>+91 98700 00000</span>
+                      <span>+91 99250 60609</span>
                     </div>
                   </div>
 
@@ -103,7 +103,7 @@ function ContactBookingContent() {
                     <Mail className="w-4 h-4 text-[#D98A2B] shrink-0" />
                     <div>
                       <strong className="block text-[#0B3C2D]">Email:</strong>
-                      <span>contact@ndhanani.com</span>
+                      <span>ndhanani85@gmail.com</span>
                     </div>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ function ContactBookingContent() {
                     <span className="text-[11px] text-ink-muted">Ask questions before booking</span>
                   </div>
                   <a
-                    href="https://wa.me/919870000000?text=Hi%20Nikunj,%20I'd%20like%20to%20ask%20a%20question."
+                    href="https://wa.me/919925060609?text=Hi%20Nikunj,%20I'd%20like%20to%20ask%20a%20question."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-2 rounded-xl bg-[#25D366] text-white font-bold text-xs hover:bg-[#20ba5a] transition-colors"
@@ -147,7 +147,7 @@ function ContactBookingContent() {
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-[#0B3C2D] shrink-0 mt-0.5" />
-                    <span>Private Zoom link or Mumbai practice address provided prior to session.</span>
+                    <span>Private Zoom link or Surat practice address provided prior to session.</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-[#0B3C2D] shrink-0 mt-0.5" />
@@ -260,11 +260,6 @@ function ContactBookingContent() {
                     {isSubmitting ? "Processing Reservation..." : "Confirm & Reserve Time Slot"}
                   </button>
 
-                  {/* Footer Crisis Note */}
-                  <div className="pt-2 text-center text-[11px] text-ink-light flex items-center justify-center space-x-1.5">
-                    <AlertCircle className="w-3.5 h-3.5 text-[#D98A2B]" />
-                    <span>Mental Health Crisis? Tele-MANAS: 14416 | Vandrevala: 9999 666 555</span>
-                  </div>
                 </form>
               ) : (
                 <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#0B3C2D]/10 shadow-lg text-center space-y-6 animate-fade-in">

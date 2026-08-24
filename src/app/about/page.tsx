@@ -35,10 +35,10 @@ export default function AboutPage() {
   ];
 
   const galleryImages = [
-    { src: "/03.png", title: "1-on-1 Practice & Executive Coaching" },
-    { src: "/01.jpeg", title: "Keynote & Leadership Seminars" },
-    { src: "/02.jpeg", title: "Event & Seminar Practice" },
-    { src: "/1st_work.png", title: "Leadership Resilience Workshops" },
+    { src: "/03.png", title: "1-on-1 Practice & Executive Coaching", objectPos: "object-[center_15%]" },
+    { src: "/01.jpeg", title: "Keynote & Leadership Seminars", objectPos: "object-[center_55%]" },
+    { src: "/02.jpeg", title: "Event & Seminar Practice", objectPos: "object-[center_55%]" },
+    { src: "/1st_work.png", title: "Leadership Resilience Workshops", objectPos: "object-top" },
   ];
 
   return (
@@ -99,13 +99,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((img, idx) => (
                 <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#0B3C2D]/10 shadow-sm hover-lift group">
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative aspect-[3/4] overflow-hidden">
                     <Image
                       src={img.src}
                       alt={img.title}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className={`object-cover ${img.objectPos} group-hover:scale-105 transition-transform duration-500`}
                     />
                   </div>
                   <div className="p-3 text-center">

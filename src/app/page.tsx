@@ -783,13 +783,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src="/1st_work.png"
                   alt="Leading Through Uncertainty"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">
@@ -806,13 +806,13 @@ export default function HomePage() {
             </div>
 
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src="/2nd_work.png"
                   alt="Modern Parenting & Teen Anxiety"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">
@@ -829,13 +829,13 @@ export default function HomePage() {
             </div>
 
             <div className="bg-[#F8F4EE] rounded-2xl overflow-hidden border border-[#0B3C2D]/10 space-y-4 hover-lift">
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src="/3rd_work.png"
                   alt="Building Emotional Balance"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 pt-0 space-y-3">

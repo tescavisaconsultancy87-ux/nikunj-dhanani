@@ -36,9 +36,9 @@ export default function AboutPage() {
 
   const galleryImages = [
     { src: "/03.png", title: "1-on-1 Practice & Executive Coaching", objectPos: "object-[center_15%]" },
-    { src: "/01.jpeg", title: "Keynote & Leadership Seminars", objectPos: "object-[center_55%]" },
-    { src: "/02.jpeg", title: "Event & Seminar Practice", objectPos: "object-[center_55%]" },
-    { src: "/1st_work.png", title: "Leadership Resilience Workshops", objectPos: "object-top" },
+    { src: "/01.jpeg", title: "Keynote & Event Speaking", objectPos: "object-[center_55%]" },
+    { src: "/2nd_work.png", title: "Family & Youth Workshops", objectPos: "object-top" },
+    { src: "/1st_work.png", title: "Couples & Relationship Seminars", objectPos: "object-top" },
   ];
 
   return (

@@ -216,10 +216,22 @@ export default function HomePage() {
                 
                 <button
                   onClick={() => setIsQuizOpen(true)}
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full border-2 border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#0B3C2D] hover:text-white font-semibold text-base transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full border-2 border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#0B3C2D] hover:text-white font-semibold text-base transition-all duration-200 group"
                 >
-                  <Sparkles className="w-5 h-5 mr-2 text-[#D98A2B]" />
+                  <Sparkles className="w-5 h-5 mr-2 text-[#D98A2B] group-hover:text-white transition-colors" />
                   Take 2-Min Stress Check-in
+                </button>
+              </div>
+
+              {/* Multilingual Hook Badge */}
+              <div className="pt-1">
+                <button
+                  onClick={() => setIsQuizOpen(true)}
+                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-white/80 border border-[#0B3C2D]/10 hover:border-[#D98A2B] text-xs font-semibold text-[#0B3C2D] shadow-2xs hover:shadow-xs transition-all group"
+                >
+                  <Globe className="w-3.5 h-3.5 text-[#D98A2B] shrink-0" />
+                  <span>Take Check-in in your language: <strong>English • हिंदी • ગુજરાતી</strong></span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#D98A2B] group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
 

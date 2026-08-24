@@ -34,12 +34,7 @@ export default function AboutPage() {
     { year: "Present", title: "Evidence-Based Family Practice", desc: "Continuing active 1-on-1 and couples counseling with a 4.9/5 client satisfaction rating." },
   ];
 
-  const galleryImages = [
-    { src: "/03.png", title: "1-on-1 Practice & Executive Coaching", objectPos: "object-[center_15%]" },
-    { src: "/01.jpeg", title: "Keynote & Event Speaking", objectPos: "object-[center_55%]" },
-    { src: "/2nd_work.png", title: "Family & Youth Workshops", objectPos: "object-top" },
-    { src: "/1st_work.png", title: "Couples & Relationship Seminars", objectPos: "object-top" },
-  ];
+
 
   return (
     <div className="bg-[#F8F4EE] py-12 md:py-20 space-y-16">
@@ -89,33 +84,7 @@ export default function AboutPage() {
           </div>
         </ScrollReveal>
 
-        {/* Practice & Speaking Gallery */}
-        <ScrollReveal direction="up" delay={150}>
-          <div className="space-y-6">
-            <div className="text-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#D98A2B]">In Practice</span>
-              <h2 className="text-2xl font-serif-display font-bold text-[#0B3C2D] mt-1">Sessions & Keynote Practice</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {galleryImages.map((img, idx) => (
-                <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#0B3C2D]/10 shadow-sm hover-lift group">
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <Image
-                      src={img.src}
-                      alt={img.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
-                      className={`object-cover ${img.objectPos} group-hover:scale-105 transition-transform duration-500`}
-                    />
-                  </div>
-                  <div className="p-3 text-center">
-                    <span className="text-xs font-bold text-[#0B3C2D]">{img.title}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
+
 
         {/* Philosophy Pull-Quote */}
         <ScrollReveal direction="up" delay={200}>

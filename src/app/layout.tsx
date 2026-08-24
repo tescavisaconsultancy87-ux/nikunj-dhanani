@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces, Caveat, Alex_Brush } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppBubble from "@/components/WhatsAppBubble";
-import MobileStickyCTA from "@/components/MobileStickyCTA";
+import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -65,11 +62,7 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} ${caveat.variable} ${alexBrush.variable} scroll-smooth`}
     >
       <body className="flex flex-col min-h-screen bg-warm-linen text-ink-navy selection:bg-dusty-sky/30">
-        <Header />
-        <main className="flex-grow pt-20">{children}</main>
-        <Footer />
-        <WhatsAppBubble />
-        <MobileStickyCTA />
+        <MainLayoutWrapper>{children}</MainLayoutWrapper>
       </body>
     </html>
   );

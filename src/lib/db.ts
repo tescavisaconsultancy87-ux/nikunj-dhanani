@@ -10,40 +10,33 @@ if (!cached) {
 export async function dbConnect() {
   const mongodbUri = process.env.MONGODB_URI;
 
-  if (cached.conn) {
-    return { conn: cached.conn, isMock: false };
+  if (!mongodbUri) {
+    throw new Error("MONGODB_URI is not configured in environment variables.");
   }
 
-  if (!mongodbUri) {
-    console.log("[DB Info] No MONGODB_URI found in process.env. Using local fallback JSON storage.");
-    return { conn: null, isMock: true };
+  if (cached.conn) {
+    return cached.conn;
   }
 
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      serverSelectionTimeoutMS: 5000,
     };
 
     cached.promise = mongoose
       .connect(mongodbUri, opts)
       .then((mongooseInstance) => {
-        console.log("[DB Success] Successfully connected to MongoDB Atlas Cloud Database");
+        console.log("[MongoDB Atlas] Connected successfully to Cloud Database");
         return mongooseInstance;
-      })
-      .catch((err) => {
-        console.warn("[DB Warning] MongoDB Atlas connection failed/timed out. Switching gracefully to local fallback storage:", err.message);
-        cached.promise = null;
-        throw err;
       });
   }
 
   try {
     cached.conn = await cached.promise;
-    return { conn: cached.conn, isMock: false };
+    return cached.conn;
   } catch (e) {
     cached.promise = null;
-    return { conn: null, isMock: true };
+    throw e;
   }
 }
 

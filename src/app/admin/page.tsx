@@ -105,7 +105,7 @@ export default function AdminDashboard() {
         localStorage.setItem("dhanani_admin_key", key);
         setBookings(data.data || []);
         setFilteredBookings(data.data || []);
-        setSource(data.source === "mongodb" ? "MongoDB Atlas Database" : "Local Storage (src/data/bookings.json)");
+        setSource("MongoDB Atlas Database");
       } else {
         setLoginError(data.error || "Invalid administrator password");
         localStorage.removeItem("dhanani_admin_key");

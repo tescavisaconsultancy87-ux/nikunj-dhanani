@@ -146,14 +146,14 @@ export default function HomePage() {
             <div className="order-1 lg:order-2 lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none bg-white rounded-3xl p-5 sm:p-7 shadow-xl border border-[#0B3C2D]/10 space-y-5">
                 
-                {/* Hero Card Image Showcase using ndhanani.png */}
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md group">
+                {/* Hero Card Image Showcase using 03.png real portrait photo */}
+                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-md group">
                   <Image
-                    src="/ndhanani.png"
+                    src="/03.png"
                     alt="Nikunj Dhanani Counselor"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C2D]/60 via-transparent to-transparent"></div>
@@ -704,11 +704,11 @@ export default function HomePage() {
               <div className="bg-white rounded-3xl p-8 border border-[#0B3C2D]/10 shadow-lg text-center space-y-4">
                 <div className="relative w-36 h-36 mx-auto">
                   <Image
-                    src="/ndhanani_2nd.png"
+                    src="/03.png"
                     alt="Nikunj Dhanani Counselor"
                     fill
                     sizes="144px"
-                    className="rounded-full object-cover border-4 border-[#F8F4EE] shadow-md hover:scale-105 transition-transform duration-300"
+                    className="rounded-full object-cover object-[center_20%] border-4 border-[#F8F4EE] shadow-md hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div>

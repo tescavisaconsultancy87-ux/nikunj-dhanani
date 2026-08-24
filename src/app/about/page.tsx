@@ -35,10 +35,10 @@ export default function AboutPage() {
   ];
 
   const galleryImages = [
-    { src: "/ndhanani_3rd.png", title: "Executive Counseling & Keynotes" },
-    { src: "/ndhanani_4th.png", title: "1-on-1 Counseling Practice" },
+    { src: "/03.png", title: "1-on-1 Practice & Executive Coaching" },
+    { src: "/01.jpeg", title: "Keynote & Leadership Seminars" },
+    { src: "/02.jpeg", title: "Event & Seminar Practice" },
     { src: "/1st_work.png", title: "Leadership Resilience Workshops" },
-    { src: "/2nd_work.png", title: "School & Parent Seminars" },
   ];
 
   return (
@@ -51,11 +51,11 @@ export default function AboutPage() {
             <div className="lg:col-span-4 text-center">
               <div className="relative w-44 h-44 mx-auto mb-4">
                 <Image
-                  src="/ndhanani_2nd.png"
+                  src="/03.png"
                   alt="Nikunj Dhanani Counselor"
                   fill
                   sizes="176px"
-                  className="rounded-full object-cover border-4 border-[#F8F4EE] shadow-xl hover:scale-105 transition-transform duration-300"
+                  className="rounded-full object-cover object-[center_20%] border-4 border-[#F8F4EE] shadow-xl hover:scale-105 transition-transform duration-300"
                   priority
                 />
               </div>

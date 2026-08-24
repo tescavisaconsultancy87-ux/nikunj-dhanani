@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Mic, Users, Calendar, ArrowRight, CheckCircle2, Mail, Send, X, Star, FileText } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -73,19 +74,49 @@ export default function SpeakingPage() {
         
         {/* Header Hero */}
         <ScrollReveal direction="up" delay={100}>
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#0B3C2D]/10 shadow-md space-y-6 text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#D98A2B]/15 text-[#D98A2B] text-xs font-bold mx-auto">
-              <Mic className="w-4 h-4" />
-              <span>Keynote Speaking & Corporate Workshops</span>
+          <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#0B3C2D]/10 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#D98A2B]/15 text-[#D98A2B] text-xs font-bold">
+                <Mic className="w-4 h-4" />
+                <span>Keynote Speaking & Corporate Workshops</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-display font-bold text-[#0B3C2D]">
+                Transformative Keynotes on Family Resilience & Leadership
+              </h1>
+
+              <p className="text-base text-ink-muted leading-relaxed">
+                Nikunj Dhanani delivers engaging, evidence-based keynotes and interactive workshops for corporate leadership teams, educational institutions, and community organizations.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href="#booking-form"
+                  className="px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs shadow-md transition-colors inline-flex items-center"
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Request Speaking Engagement
+                </a>
+              </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-display font-bold text-[#0B3C2D]">
-              Transformative Keynotes on Family Resilience, Stress & Leadership
-            </h1>
-
-            <p className="text-base text-ink-muted leading-relaxed max-w-2xl mx-auto">
-              Nikunj Dhanani delivers engaging, evidence-based keynotes and interactive workshops for corporate leadership teams, educational institutions, and community organizations.
-            </p>
+            <div className="lg:col-span-5 relative">
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border border-[#0B3C2D]/10 group">
+                <Image
+                  src="/01.jpeg"
+                  alt="Nikunj Dhanani Keynote Speaker - Growing Together Event"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover object-[center_60%] group-hover:scale-105 transition-transform duration-500"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C2D]/70 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white p-3 rounded-xl bg-black/40 backdrop-blur-md border border-white/20">
+                  <p className="text-xs font-bold">Nikunj Dhanani</p>
+                  <p className="text-[11px] text-gray-200">Keynote Speaker & Executive Life Coach</p>
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 

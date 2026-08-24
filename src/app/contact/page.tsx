@@ -30,7 +30,7 @@ function ContactBookingContent() {
     }
   }, [searchParams]);
 
-  const handleSubmitBooking = (e: React.FormEvent) => {
+  const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDate || !selectedTime) {
       alert("Please select a date and time slot for your session.");
@@ -38,10 +38,24 @@ function ContactBookingContent() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          serviceType: sessionType,
+          message: `Scheduled: ${selectedDate.toDateString()} at ${selectedTime}. Notes: ${formData.notes || "None"}`,
+        }),
+      });
+    } catch (err) {
+      console.error("Booking error:", err);
+    } finally {
       setIsSubmitting(false);
       setIsBooked(true);
-    }, 800);
+    }
   };
 
   return (

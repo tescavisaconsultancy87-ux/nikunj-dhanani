@@ -15,7 +15,13 @@ import {
   CheckCircle,
   Inbox,
   LogOut,
-  RefreshCw
+  RefreshCw,
+  Trash2,
+  Edit3,
+  X,
+  Save,
+  Tag,
+  AlertTriangle
 } from "lucide-react";
 
 interface Booking {
@@ -42,6 +48,20 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("All");
 
+  // Edit State
+  const [editingBooking, setEditingBooking] = useState<Booking | null>(null);
+  const [editForm, setEditForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    serviceType: "",
+    message: "",
+  });
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  // Delete State
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
   // Load auth state from localStorage on mount
   useEffect(() => {
     const savedKey = localStorage.getItem("dhanani_admin_key");
@@ -65,7 +85,8 @@ export default function AdminDashboard() {
           b.name.toLowerCase().includes(term) ||
           b.email.toLowerCase().includes(term) ||
           b.phone.toLowerCase().includes(term) ||
-          b.message.toLowerCase().includes(term)
+          b.message.toLowerCase().includes(term) ||
+          b.serviceType.toLowerCase().includes(term)
       );
     }
     
@@ -84,7 +105,7 @@ export default function AdminDashboard() {
         localStorage.setItem("dhanani_admin_key", key);
         setBookings(data.data || []);
         setFilteredBookings(data.data || []);
-        setSource(data.source === "mongodb" ? "MongoDB Atlas Database" : "Local JSON Storage");
+        setSource(data.source === "mongodb" ? "MongoDB Atlas Database" : "Local Storage (src/data/bookings.json)");
       } else {
         setLoginError(data.error || "Invalid administrator password");
         localStorage.removeItem("dhanani_admin_key");
@@ -119,12 +140,82 @@ export default function AdminDashboard() {
     }
   };
 
-  // Metrics calculations
+  // Delete Lead Handler
+  const handleDeleteLead = async (id: string) => {
+    if (!window.confirm("Are you sure you want to permanently delete this lead entry?")) {
+      return;
+    }
+
+    const savedKey = localStorage.getItem("dhanani_admin_key");
+    setDeletingId(id);
+    try {
+      const res = await fetch(`/api/bookings?id=${id}&key=${savedKey}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setBookings(bookings.filter((b) => b._id !== id));
+      } else {
+        alert(data.error || "Failed to delete lead");
+      }
+    } catch (err) {
+      alert("Error deleting lead from server");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  // Edit Lead Handlers
+  const handleStartEdit = (booking: Booking) => {
+    setEditingBooking(booking);
+    setEditForm({
+      name: booking.name,
+      email: booking.email || "",
+      phone: booking.phone || "",
+      serviceType: booking.serviceType || "General Counseling Inquiry",
+      message: booking.message || "",
+    });
+  };
+
+  const handleSaveEdit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingBooking) return;
+
+    const savedKey = localStorage.getItem("dhanani_admin_key");
+    setIsUpdating(true);
+    try {
+      const res = await fetch(`/api/bookings?key=${savedKey}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: editingBooking._id,
+          ...editForm,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setBookings(
+          bookings.map((b) =>
+            b._id === editingBooking._id ? { ...b, ...editForm } : b
+          )
+        );
+        setEditingBooking(null);
+      } else {
+        alert(data.error || "Failed to update lead");
+      }
+    } catch (err) {
+      alert("Error updating lead");
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  // Multi-Source Metrics Calculations
   const totalCount = bookings.length;
-  const counselingCount = bookings.filter(b => b.serviceType.toLowerCase().includes("counseling") || b.serviceType.toLowerCase().includes("life")).length;
-  const quizCount = bookings.filter(b => b.serviceType.toLowerCase().includes("quiz") || b.serviceType.toLowerCase().includes("lead")).length;
-  const parentingCount = bookings.filter(b => b.serviceType.toLowerCase().includes("parenting")).length;
-  const relationshipCount = bookings.filter(b => b.serviceType.toLowerCase().includes("relationship") || b.serviceType.toLowerCase().includes("repair")).length;
+  const quizLeadsCount = bookings.filter((b) => b.serviceType.toLowerCase().includes("quiz") || b.serviceType.toLowerCase().includes("check-in")).length;
+  const directBookingsCount = bookings.filter((b) => b.serviceType.toLowerCase().includes("counseling") || b.serviceType.toLowerCase().includes("parenting") || b.serviceType.toLowerCase().includes("relationship")).length;
+  const speakingCount = bookings.filter((b) => b.serviceType.toLowerCase().includes("speaking") || b.serviceType.toLowerCase().includes("keynote")).length;
+  const resourceCount = bookings.filter((b) => b.serviceType.toLowerCase().includes("resource") || b.serviceType.toLowerCase().includes("guide") || b.serviceType.toLowerCase().includes("download")).length;
 
   if (!isAuthenticated) {
     return (
@@ -138,7 +229,7 @@ export default function AdminDashboard() {
               Practitioner Admin Portal
             </h1>
             <p className="text-xs text-[#5E5852]">
-              Enter administrator password to access client bookings and assessment leads.
+              Enter administrator password to view and manage client leads.
             </p>
           </div>
 
@@ -188,14 +279,14 @@ export default function AdminDashboard() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0 bg-[#FFFDF9] p-6 rounded-3xl border border-[#E6DEC8] shadow-sm">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#C97B5B] block">
-              Nikunj Dhanani • Practice Dashboard
+              Nikunj Dhanani • Master Practice Lead Center
             </span>
             <h1 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#1E2C24]">
-              Client Inquiries & Assessment Leads
+              Multi-Source Client Inquiries & Leads
             </h1>
             <p className="text-xs text-[#5E5852] flex items-center mt-1">
               <Database className="w-3.5 h-3.5 mr-1.5 text-[#6B7F62]" />
-              Data Source: <strong className="ml-1 text-[#1E2C24] font-bold">{source}</strong>
+              Active Database: <strong className="ml-1 text-[#1E2C24] font-bold">{source}</strong>
             </p>
           </div>
           <div className="flex items-center space-x-3">
@@ -205,7 +296,7 @@ export default function AdminDashboard() {
               title="Refresh Client Data"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin text-[#C97B5B]" : "text-[#6B7F62]"}`} />
-              <span>Refresh</span>
+              <span>Refresh Leads</span>
             </button>
             <button
               onClick={handleLogout}
@@ -217,14 +308,14 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* High-Contrast Metrics Grid */}
+        {/* Multi-Source Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {[
             { label: "Total Submissions", val: totalCount, border: "border-l-[#1E2C24]", bg: "bg-[#FFFDF9]" },
-            { label: "Quiz Leads", val: quizCount, border: "border-l-[#C97B5B]", bg: "bg-[#FFFDF9]" },
-            { label: "Counseling", val: counselingCount, border: "border-l-[#6B7F62]", bg: "bg-[#FFFDF9]" },
-            { label: "Parenting", val: parentingCount, border: "border-l-[#D98A2B]", bg: "bg-[#FFFDF9]" },
-            { label: "Relationship", val: relationshipCount, border: "border-l-[#6B7F62]", bg: "bg-[#FFFDF9]" }
+            { label: "Stress Quiz Leads", val: quizLeadsCount, border: "border-l-[#C97B5B]", bg: "bg-[#FFFDF9]" },
+            { label: "1-on-1 Counseling", val: directBookingsCount, border: "border-l-[#6B7F62]", bg: "bg-[#FFFDF9]" },
+            { label: "Speaking Requests", val: speakingCount, border: "border-l-[#D98A2B]", bg: "bg-[#FFFDF9]" },
+            { label: "Resource Downloads", val: resourceCount, border: "border-l-[#8A7B9C]", bg: "bg-[#FFFDF9]" }
           ].map((metric, idx) => (
             <div key={idx} className={`bg-[#FFFDF9] p-5 rounded-2xl border border-[#E6DEC8] border-l-4 ${metric.border} shadow-2xs space-y-1`}>
               <span className="block text-[11px] font-bold text-[#8C847C] uppercase tracking-wider">
@@ -244,12 +335,13 @@ export default function AdminDashboard() {
             <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-[#8C847C]" />
             <input
               type="text"
-              placeholder="Search clients by name, phone, email..."
+              placeholder="Search by name, phone, email, or category..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] focus:outline-none focus:border-[#6B7F62] text-xs font-semibold text-[#1E2C24]"
             />
           </div>
+
           {/* Filter Dropdown */}
           <div className="flex items-center space-x-3 shrink-0">
             <Filter className="w-4 h-4 text-[#8C847C]" />
@@ -258,17 +350,18 @@ export default function AdminDashboard() {
               onChange={(e) => setFilterType(e.target.value)}
               className="px-4 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] focus:outline-none text-xs font-bold text-[#1E2C24]"
             >
-              <option value="All">All Inquiries & Leads</option>
-              <option value="Quiz">Quiz Check-in Leads</option>
-              <option value="Counseling">Counseling</option>
+              <option value="All">All Lead Sources</option>
+              <option value="Quiz">Stress Quiz Leads</option>
+              <option value="Counseling">Counseling & Coaching</option>
               <option value="Parenting">Parenting</option>
-              <option value="Relationship">Relationship</option>
-              <option value="Speaking">Public Speaking</option>
+              <option value="Relationship">Relationship Repair</option>
+              <option value="Speaking">Keynote Speaking</option>
+              <option value="Resource">Resource Downloads</option>
             </select>
           </div>
         </div>
 
-        {/* High-Contrast Client Inquiries Grid */}
+        {/* Client Inquiries Display Grid */}
         {loading && bookings.length === 0 ? (
           <div className="text-center py-20 bg-[#FFFDF9] rounded-3xl border border-[#E6DEC8]">
             <RefreshCw className="w-10 h-10 animate-spin text-[#C97B5B] mx-auto mb-3" />
@@ -279,7 +372,7 @@ export default function AdminDashboard() {
             <Inbox className="w-12 h-12 text-[#8C847C] mx-auto" />
             <h3 className="text-lg font-serif-display font-bold text-[#1E2C24]">No Inquiries Found</h3>
             <p className="text-xs text-[#5E5852] max-w-md mx-auto">
-              No entries match your search criteria. Submissions from the website booking form and assessment quiz will appear here in real time.
+              No entries match your search criteria. Submissions from the quiz, booking forms, speaking requests, and resource downloads will appear here automatically.
             </p>
           </div>
         ) : (
@@ -287,58 +380,87 @@ export default function AdminDashboard() {
             {filteredBookings.map((booking) => (
               <div
                 key={booking._id}
-                className="bg-[#FFFDF9] hover:bg-[#FAF6F0]/70 transition-all p-6 rounded-2xl border border-[#E6DEC8] shadow-sm flex flex-col justify-between space-y-4 border-l-4 border-l-[#C97B5B]"
+                className="bg-[#FFFDF9] hover:bg-[#FAF6F0]/70 transition-all p-6 rounded-2xl border border-[#E6DEC8] shadow-sm flex flex-col justify-between space-y-4 border-l-4 border-l-[#C97B5B] relative group"
               >
                 <div className="space-y-4">
                   
-                  {/* Card Top Row: Name & Date */}
+                  {/* Card Top Row: Name, Source Badge & Actions */}
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-lg font-serif-display font-bold text-[#1E2C24] leading-snug">
                         {booking.name}
                       </h3>
                       <span className="inline-block px-3 py-1 mt-1.5 rounded-full bg-[#F9EFEA] text-[#C97B5B] text-[10px] font-extrabold uppercase tracking-wider border border-[#C97B5B]/30">
-                        {booking.serviceType}
+                        🏷️ {booking.serviceType}
                       </span>
                     </div>
 
-                    <div className="text-right text-[11px] font-semibold text-[#5E5852] bg-[#FAF6F0] px-3 py-1.5 rounded-xl border border-[#E6DEC8] flex items-center space-x-1 shrink-0">
-                      <Calendar className="w-3.5 h-3.5 text-[#6B7F62] mr-1" />
-                      <span>
-                        {new Date(booking.createdAt).toLocaleDateString("en-IN", {
-                          month: "short",
-                          day: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit"
-                        })}
-                      </span>
+                    <div className="flex items-center space-x-2 shrink-0">
+                      {/* Edit Lead Button */}
+                      <button
+                        onClick={() => handleStartEdit(booking)}
+                        className="p-2 rounded-xl bg-[#FAF6F0] hover:bg-[#EBF0E8] text-[#1E2C24] border border-[#E6DEC8] transition-colors"
+                        title="Edit Lead Details"
+                      >
+                        <Edit3 className="w-3.5 h-3.5 text-[#6B7F62]" />
+                      </button>
+
+                      {/* Delete Lead Button */}
+                      <button
+                        onClick={() => handleDeleteLead(booking._id)}
+                        disabled={deletingId === booking._id}
+                        className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition-colors"
+                        title="Delete Lead Entry"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
 
-                  {/* Client Contact Info Grid - High Contrast */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-[#E6DEC8] text-xs">
+                  {/* Submission Timestamp */}
+                  <div className="text-[11px] font-semibold text-[#5E5852] bg-[#FAF6F0] px-3 py-1.5 rounded-xl border border-[#E6DEC8] inline-flex items-center space-x-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#6B7F62] mr-1" />
+                    <span>
+                      Submitted: {new Date(booking.createdAt).toLocaleDateString("en-IN", {
+                        weekday: "short",
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      })}
+                    </span>
+                  </div>
+
+                  {/* Client Contact Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs">
                     <div className="flex items-center space-x-2 text-[#1E2C24] font-semibold bg-[#FAF6F0] p-2.5 rounded-xl border border-[#E6DEC8]">
                       <Phone className="w-4 h-4 text-[#6B7F62] shrink-0" />
                       <a href={`tel:${booking.phone}`} className="hover:underline text-[#1E2C24]">
-                        +91 {booking.phone}
+                        {booking.phone ? `+91 ${booking.phone}` : "No Phone"}
                       </a>
                     </div>
 
-                    {booking.email && (
+                    {booking.email ? (
                       <div className="flex items-center space-x-2 text-[#1E2C24] font-semibold bg-[#FAF6F0] p-2.5 rounded-xl border border-[#E6DEC8]">
                         <Mail className="w-4 h-4 text-[#6B7F62] shrink-0" />
                         <a href={`mailto:${booking.email}`} className="hover:underline text-[#1E2C24] truncate">
                           {booking.email}
                         </a>
                       </div>
+                    ) : (
+                      <div className="flex items-center space-x-2 text-[#8C847C] font-medium bg-[#FAF6F0] p-2.5 rounded-xl border border-[#E6DEC8]">
+                        <Mail className="w-4 h-4 text-[#8C847C] shrink-0" />
+                        <span>Email Optional</span>
+                      </div>
                     )}
                   </div>
 
-                  {/* Client Message / Quiz Assessment Notes */}
+                  {/* Context Notes */}
                   {booking.message && (
                     <div className="p-3.5 bg-[#FAF6F0] rounded-xl border border-[#E6DEC8] text-xs text-[#2E2A26] space-y-1">
                       <span className="text-[10px] font-bold text-[#6B7F62] uppercase tracking-wider block">
-                        Submission Context / Assessment Notes:
+                        Submission Context / Client Notes:
                       </span>
                       <div className="flex items-start space-x-2">
                         <MessageSquare className="w-4 h-4 text-[#C97B5B] shrink-0 mt-0.5" />
@@ -351,24 +473,23 @@ export default function AdminDashboard() {
 
                 </div>
 
-                {/* Card Footer Security Signal */}
+                {/* Card Footer Security & WhatsApp Quick Reply */}
                 <div className="pt-3 border-t border-[#E6DEC8] flex items-center justify-between">
                   <span className="text-[11px] text-[#6B7F62] font-bold uppercase flex items-center">
                     <CheckCircle className="w-3.5 h-3.5 mr-1 text-[#6B7F62]" />
-                    Confidential Client Submission
+                    Confidential Submission
                   </span>
                   
-                  {/* WhatsApp Quick Link to Client */}
                   {booking.phone && (
                     <a
                       href={`https://wa.me/91${booking.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
-                        `Hi ${booking.name}, thank you for reaching out regarding ${booking.serviceType}. This is Nikunj Dhanani.`
+                        `Hi ${booking.name}, thank you for submitting an inquiry regarding ${booking.serviceType}. This is Nikunj Dhanani.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-[11px] font-bold transition-all shadow-2xs"
+                      className="px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-[11px] font-bold transition-all shadow-2xs flex items-center space-x-1"
                     >
-                      Reply on WhatsApp
+                      <span>Reply on WhatsApp</span>
                     </a>
                   )}
                 </div>
@@ -376,6 +497,114 @@ export default function AdminDashboard() {
             ))}
           </div>
         )}
+
+        {/* EDIT LEAD MODAL */}
+        {editingBooking && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1E2C24]/75 backdrop-blur-sm animate-fade-in">
+            <div className="relative w-full max-w-lg bg-[#FFFDF9] rounded-3xl shadow-2xl p-6 sm:p-8 border border-[#E6DEC8] my-auto text-[#2E2A26]">
+              <div className="flex items-center justify-between border-b border-[#E6DEC8] pb-4 mb-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 rounded-xl bg-[#6B7F62] text-white flex items-center justify-center">
+                    <Edit3 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif-display font-bold text-lg text-[#1E2C24]">
+                      Edit Lead Information
+                    </h3>
+                    <span className="text-[11px] text-[#5E5852]">ID: {editingBooking._id}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setEditingBooking(null)}
+                  className="p-1.5 rounded-full text-[#8C847C] hover:bg-[#FAF6F0]"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSaveEdit} className="space-y-4 text-left">
+                <div>
+                  <label className="block text-xs font-bold text-[#1E2C24] mb-1">Full Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={editForm.name}
+                    onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] text-xs font-medium text-[#1E2C24]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-[#1E2C24] mb-1">Phone Number</label>
+                    <input
+                      type="tel"
+                      value={editForm.phone}
+                      onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] text-xs font-medium text-[#1E2C24]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[#1E2C24] mb-1">Email Address</label>
+                    <input
+                      type="email"
+                      value={editForm.email}
+                      onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] text-xs font-medium text-[#1E2C24]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1E2C24] mb-1">Service Type / Lead Source Tag</label>
+                  <select
+                    value={editForm.serviceType}
+                    onChange={(e) => setEditForm({ ...editForm, serviceType: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] text-xs font-bold text-[#1E2C24]"
+                  >
+                    <option value="2-Min Stress Check-in Lead">2-Min Stress Check-in Lead</option>
+                    <option value="Parenting Coaching">Parenting Coaching</option>
+                    <option value="Relationship Repair">Relationship Repair</option>
+                    <option value="Counselling & Life Coaching">Counselling & Life Coaching</option>
+                    <option value="Keynote Speaking Request">Keynote Speaking Request</option>
+                    <option value="Resource Download">Resource Download</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1E2C24] mb-1">Context Notes & Assessment Summary</label>
+                  <textarea
+                    rows={3}
+                    value={editForm.message}
+                    onChange={(e) => setEditForm({ ...editForm, message: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DEC8] bg-[#FAF6F0] text-xs font-medium text-[#1E2C24]"
+                  ></textarea>
+                </div>
+
+                <div className="flex items-center justify-end space-x-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setEditingBooking(null)}
+                    className="px-5 py-2.5 rounded-full border border-[#E6DEC8] text-xs font-bold text-[#5E5852] hover:bg-[#FAF6F0]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isUpdating}
+                    className="px-6 py-2.5 rounded-full bg-[#C97B5B] hover:bg-[#BD5C3D] text-white text-xs font-bold transition-all shadow-md flex items-center space-x-1.5 glow-btn"
+                  >
+                    <Save className="w-4 h-4" />
+                    <span>{isUpdating ? "Saving..." : "Save Changes"}</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

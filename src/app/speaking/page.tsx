@@ -63,9 +63,25 @@ export default function SpeakingPage() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    try {
+      await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.org ? `Org: ${formData.org}` : "",
+          serviceType: "Keynote Speaking Request",
+          message: `Topic: ${selectedTopic}. Proposed Details: ${formData.message || "None"}`,
+        }),
+      });
+    } catch (err) {
+      console.error("Speaking request error:", err);
+    } finally {
+      setIsSubmitted(true);
+    }
   };
 
   return (

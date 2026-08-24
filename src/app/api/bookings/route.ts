@@ -51,18 +51,45 @@ function getFallbackBookings() {
   return [];
 }
 
-// POST: Submit a new booking / Quiz lead form
+function deleteFallbackBooking(id: string) {
+  try {
+    const bookings = getFallbackBookings();
+    const updated = bookings.filter((item: any) => item._id !== id);
+    fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(updated, null, 2), "utf8");
+    return true;
+  } catch (error) {
+    console.error("Fallback delete error:", error);
+    return false;
+  }
+}
+
+function updateFallbackBooking(id: string, updateData: any) {
+  try {
+    const bookings = getFallbackBookings();
+    const index = bookings.findIndex((item: any) => item._id === id);
+    if (index !== -1) {
+      bookings[index] = { ...bookings[index], ...updateData };
+      fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(bookings, null, 2), "utf8");
+      return bookings[index];
+    }
+    return null;
+  } catch (error) {
+    console.error("Fallback update error:", error);
+    return null;
+  }
+}
+
+// POST: Submit a new booking / Quiz lead / Contact form
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email, phone, serviceType, service, message, notes } = body;
 
-    // Flexible extraction so neither booking form nor quiz leads fail validation
     const leadName = name || "Anonymous Visitor";
     const leadPhone = phone || "";
     const leadEmail = email || "";
     const finalService = serviceType || service || "General Counseling Inquiry";
-    const finalMessage = message || notes || "Submitted via 2-Min Stress Check-in Quiz";
+    const finalMessage = message || notes || "Submitted via Website";
 
     if (!leadPhone && !leadEmail) {
       return NextResponse.json(
@@ -90,7 +117,7 @@ export async function POST(req: Request) {
       const saved = saveFallbackBooking(dbBookingData);
       return NextResponse.json({
         success: true,
-        message: "Lead received and saved to local file successfully.",
+        message: "Lead received and saved successfully.",
         data: saved,
         source: "local-file",
       });
@@ -139,5 +166,70 @@ export async function GET(req: Request) {
       { error: "Internal Server Error", details: error.message },
       { status: 500 }
     );
+  }
+}
+
+// DELETE: Delete a lead entry
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    const key = searchParams.get("key") || req.headers.get("x-admin-key");
+
+    const ADMIN_KEY = process.env.ADMIN_KEY || "dhanani_admin_2026";
+    if (key !== ADMIN_KEY) {
+      return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+    }
+
+    if (!id) {
+      return NextResponse.json({ error: "Booking ID is required" }, { status: 400 });
+    }
+
+    const { isMock } = await dbConnect();
+
+    if (isMock) {
+      deleteFallbackBooking(id);
+      return NextResponse.json({ success: true, message: "Lead deleted successfully from local file" });
+    } else {
+      await Booking.findByIdAndDelete(id);
+      return NextResponse.json({ success: true, message: "Lead deleted successfully from database" });
+    }
+  } catch (error: any) {
+    console.error("API DELETE error:", error);
+    return NextResponse.json({ error: "Failed to delete lead", details: error.message }, { status: 500 });
+  }
+}
+
+// PUT: Edit/Update a lead entry
+export async function PUT(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const key = searchParams.get("key") || req.headers.get("x-admin-key");
+
+    const ADMIN_KEY = process.env.ADMIN_KEY || "dhanani_admin_2026";
+    if (key !== ADMIN_KEY) {
+      return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { id, name, email, phone, serviceType, message } = body;
+
+    if (!id) {
+      return NextResponse.json({ error: "Booking ID is required" }, { status: 400 });
+    }
+
+    const updateData = { name, email, phone, serviceType, message };
+    const { isMock } = await dbConnect();
+
+    if (isMock) {
+      const updated = updateFallbackBooking(id, updateData);
+      return NextResponse.json({ success: true, message: "Lead updated successfully", data: updated });
+    } else {
+      const updated = await Booking.findByIdAndUpdate(id, updateData, { new: true });
+      return NextResponse.json({ success: true, message: "Lead updated successfully", data: updated });
+    }
+  } catch (error: any) {
+    console.error("API PUT error:", error);
+    return NextResponse.json({ error: "Failed to update lead", details: error.message }, { status: 500 });
   }
 }

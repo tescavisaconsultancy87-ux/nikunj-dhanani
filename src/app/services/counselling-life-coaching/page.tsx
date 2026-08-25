@@ -61,7 +61,7 @@ export default function CounsellingLifeCoachingPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
                 href="/contact?service=Counselling%20%26%20Life%20Coaching#booking"
-                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-md transition-all glow-btn"
+                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-md transition-all"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Book Individual Session
@@ -193,7 +193,7 @@ export default function CounsellingLifeCoachingPage() {
           </h3>
           <Link
             href="/contact?service=Counselling%20%26%20Life%20Coaching#booking"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-lg transition-all glow-btn"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-lg transition-all"
           >
             Book Your Individual Session
             <ArrowRight className="w-4 h-4 ml-2" />

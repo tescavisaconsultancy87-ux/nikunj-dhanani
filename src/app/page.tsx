@@ -18,7 +18,8 @@ import {
   ChevronRight,
   MessageCircle,
   Clock,
-  ChevronLeft
+  ChevronLeft,
+  Calendar
 } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 import WaveDivider from "@/components/WaveDivider";
@@ -137,120 +138,89 @@ export default function HomePage() {
   return (
     <div className="space-y-0 bg-[#F8F4EE]">
       
-      {/* ── SECTION 1: HERO (Nikunj image card FIRST on mobile) ── */}
-      <section className="relative bg-[#F8F4EE] pt-8 pb-20 md:pt-12 md:pb-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── SECTION 1: HERO (Redesigned matching mockup & page color palette) ── */}
+      <section className="relative bg-[#F8F4EE] pt-6 pb-16 md:pt-10 md:pb-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Person Image Card (ORDER 1 on Mobile, ORDER 2 on Desktop) */}
-            <div className="order-1 lg:order-2 lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none bg-white rounded-3xl p-5 sm:p-7 shadow-xl border border-[#0B3C2D]/10 space-y-5">
-                
-                {/* Hero Card Image Showcase using 03.png real portrait photo */}
-                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-md group">
-                  <Image
-                    src="/03.png"
-                    alt="Nikunj Dhanani Counselor"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B3C2D]/60 via-transparent to-transparent"></div>
-                  
-                  <span className="absolute bottom-3 left-3 px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[11px] font-bold text-[#0B3C2D] shadow-sm flex items-center">
-                    ✨ Safe & Confidential Environment
-                  </span>
-                </div>
-
-                {/* Card Quick Feature */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#D98A2B]">
-                      One-on-One Dedicated Care
-                    </span>
-                    <span className="text-xs text-ink-light">60-Min Sessions</span>
-                  </div>
-                  <h3 className="text-lg font-serif-display font-bold text-[#0B3C2D]">
-                    Direct Support from Nikunj Dhanani
-                  </h3>
-                  <p className="text-xs text-ink-muted leading-relaxed">
-                    No random matching or junior associates. Every session is conducted directly by Nikunj with personalized session notes and progress tracking.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Left Content (ORDER 2 on Mobile, ORDER 1 on Desktop) */}
+            {/* Left Content (ORDER 1 on Mobile & Desktop) */}
             <div className="order-2 lg:order-1 lg:col-span-7 space-y-6">
               
-              {/* Trust Badge Pill */}
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0B3C2D]/10 border border-[#0B3C2D]/15 text-[#0B3C2D] text-xs font-semibold">
-                <LeafMotif className="w-4 h-4 text-[#D98A2B]" />
-                <span>Personal Practitioner · Surat & Nationwide Online</span>
+              {/* Top Tag Pill */}
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0B3C2D]/10 text-[#0B3C2D] text-xs font-semibold shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#D98A2B]" />
+                <span>Family Counselor & Life Coach</span>
               </div>
 
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif-display font-bold text-[#0B3C2D] leading-[1.15] tracking-tight">
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif-display font-bold text-[#0B3C2D] leading-[1.15] tracking-tight max-w-3xl">
                 Guiding families through stress,{" "}
-                <span className="italic text-[#D98A2B] font-normal underline decoration-[#8CA899]/50 decoration-wavy decoration-2">
+                <span className="italic text-[#D98A2B] font-normal inline-block">
                   back to calm.
                 </span>
               </h1>
 
-              {/* Subline */}
-              <p className="text-base sm:text-lg text-ink-muted leading-relaxed max-w-2xl">
-                6+ years of structured, evidence-based counseling for parenting overwhelm, couples relationship repair, and high-stress executives — delivered by one person you can actually reach.
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-ink-muted leading-relaxed max-w-xl">
+                Helping families, couples & professionals overcome stress, strengthen relationships, and create a happier, balanced life.
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              {/* Action Buttons Row */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
                 <Link
                   href="/contact#booking"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-base shadow-lg hover-lift transition-all glow-btn"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-md hover-lift transition-all"
                 >
-                  <PhoneCall className="w-5 h-5 mr-2" />
+                  <Calendar className="w-4.5 h-4.5 mr-2 text-[#D98A2B]" />
                   Book a Session
                 </Link>
                 
                 <button
                   onClick={() => setIsQuizOpen(true)}
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full border-2 border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#0B3C2D] hover:text-white font-semibold text-base transition-all duration-200 group"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white border border-[#0B3C2D]/15 text-[#0B3C2D] hover:bg-[#0B3C2D] hover:text-white font-semibold text-sm shadow-2xs hover:shadow-xs transition-all group"
                 >
-                  <Sparkles className="w-5 h-5 mr-2 text-[#D98A2B] group-hover:text-white transition-colors" />
-                  Take 2-Min Stress Check-in
+                  <Sparkles className="w-4.5 h-4.5 mr-2 text-[#D98A2B] group-hover:text-white transition-colors" />
+                  Take 2-Min Stress Check
                 </button>
               </div>
 
-              {/* Multilingual Hook Badge */}
-              <div className="pt-1">
-                <button
-                  onClick={() => setIsQuizOpen(true)}
-                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-white/80 border border-[#0B3C2D]/10 hover:border-[#D98A2B] text-xs font-semibold text-[#0B3C2D] shadow-2xs hover:shadow-xs transition-all group"
-                >
-                  <Globe className="w-3.5 h-3.5 text-[#D98A2B] shrink-0" />
-                  <span>Take Check-in in your language: <strong>English • हिंदी • ગુજરાતી</strong></span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#D98A2B] group-hover:translate-x-0.5 transition-transform" />
-                </button>
+              {/* Stats Cards Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className="bg-white/90 p-3.5 rounded-2xl border border-[#0B3C2D]/10 flex items-center space-x-3 shadow-2xs">
+                  <div className="w-9 h-9 rounded-xl bg-[#0B3C2D]/10 text-[#0B3C2D] flex items-center justify-center shrink-0">
+                    <Users className="w-4 h-4 text-[#0B3C2D]" />
+                  </div>
+                  <div>
+                    <span className="block font-serif-display font-bold text-base text-[#0B3C2D] leading-none">80+</span>
+                    <span className="block text-[11px] text-ink-muted leading-tight mt-0.5">Families Guided</span>
+                  </div>
+                </div>
+
+                <div className="bg-white/90 p-3.5 rounded-2xl border border-[#0B3C2D]/10 flex items-center space-x-3 shadow-2xs">
+                  <div className="w-9 h-9 rounded-xl bg-[#D98A2B]/15 text-[#D98A2B] flex items-center justify-center shrink-0">
+                    <Star className="w-4 h-4 fill-current" />
+                  </div>
+                  <div>
+                    <span className="block font-serif-display font-bold text-base text-[#0B3C2D] leading-none">4.9/5</span>
+                    <span className="block text-[11px] text-ink-muted leading-tight mt-0.5">Client Rating</span>
+                  </div>
+                </div>
+
+                <div className="bg-white/90 p-3.5 rounded-2xl border border-[#0B3C2D]/10 flex items-center space-x-3 shadow-2xs">
+                  <div className="w-9 h-9 rounded-xl bg-[#8CA899]/20 text-[#0B3C2D] flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-4 h-4 text-[#0B3C2D]" />
+                  </div>
+                  <div>
+                    <span className="block font-serif-display font-bold text-base text-[#0B3C2D] leading-none">100%</span>
+                    <span className="block text-[11px] text-ink-muted leading-tight mt-0.5">Confidential</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Real Avatars Trust Signal Row */}
-              <div className="pt-6 border-t border-[#0B3C2D]/10 flex flex-wrap items-center gap-6">
-                <div className="flex items-center space-x-1 text-[#D98A2B]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                  <span className="ml-1 text-xs font-bold text-[#0B3C2D]">4.9 / 5.0</span>
-                </div>
-
-                <div className="text-xs text-ink-muted flex items-center space-x-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#8CA899]"></span>
-                  <span>80+ families & executives guided across India</span>
-                </div>
-
-                {/* Real Photographic Avatars */}
-                <div className="flex -space-x-2.5">
+              {/* Avatars Trust Row */}
+              <div className="flex items-center space-x-3 pt-1">
+                <div className="flex -space-x-2">
                   {realAvatars.map((person, idx) => (
                     <div key={idx} className="relative w-8 h-8">
                       <Image
@@ -258,16 +228,86 @@ export default function HomePage() {
                         alt={person.name}
                         fill
                         sizes="32px"
-                        className="rounded-full object-cover border-2 border-[#F8F4EE] shadow-sm hover:scale-110 transition-transform"
+                        className="rounded-full object-cover border-2 border-[#F8F4EE] shadow-2xs"
                       />
                     </div>
                   ))}
                 </div>
+                <span className="text-xs text-ink-muted">
+                  Trusted by families & professionals across <strong>India</strong>
+                </span>
               </div>
 
             </div>
 
+            {/* Person Photo Card (Right Side) */}
+            <div className="order-1 lg:order-2 lg:col-span-5 relative">
+              <div className="relative mx-auto max-w-md lg:max-w-none rounded-[32px] p-2.5 bg-white/80 shadow-2xl border border-[#0B3C2D]/10 overflow-hidden space-y-2.5">
+                
+                {/* Person portrait photo /03.png kept as requested */}
+                <div className="relative w-full aspect-[4/5] rounded-[24px] overflow-hidden shadow-sm group">
+                  <Image
+                    src="/03.png"
+                    alt="Nikunj Dhanani Counselor"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-[center_20%] group-hover:scale-103 transition-transform duration-500"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                </div>
+
+                {/* Floating Bottom Card Badge */}
+                <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-[#0B3C2D]/10 flex items-center justify-between gap-3 shadow-sm">
+                  <div className="flex items-center space-x-3 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#0B3C2D] text-white flex items-center justify-center shrink-0 shadow-xs">
+                      <ShieldCheck className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-[#0B3C2D] truncate">
+                        A Safe & Confidential Space
+                      </h4>
+                      <p className="text-[11px] text-ink-muted leading-tight line-clamp-1">
+                        One-on-one care tailored to your unique journey.
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    href="/about"
+                    className="w-8 h-8 rounded-full border border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#0B3C2D] hover:text-white flex items-center justify-center shrink-0 transition-colors"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+
           </div>
+
+          {/* WORKED WITH INDIVIDUALS & LEADERS FROM Logos Bar */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 border border-[#0B3C2D]/10 shadow-2xs">
+            <span className="text-[10px] sm:text-[11px] font-bold text-ink-muted uppercase tracking-widest text-center block mb-5 font-sans">
+              WORKED WITH INDIVIDUALS & LEADERS FROM
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-75">
+              <span className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[#0B3C2D]/80">Google</span>
+              <span className="text-xl md:text-2xl font-semibold font-sans tracking-tight text-[#0B3C2D]/80 flex items-center">
+                <span className="grid grid-cols-2 gap-0.5 w-4 h-4 mr-2">
+                  <span className="bg-[#F25022]"></span>
+                  <span className="bg-[#7FBA00]"></span>
+                  <span className="bg-[#00A4EF]"></span>
+                  <span className="bg-[#FFB900]"></span>
+                </span>
+                Microsoft
+              </span>
+              <span className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[#0B3C2D]/80">airbnb</span>
+              <span className="text-xl md:text-2xl font-bold font-sans tracking-tighter text-[#0B3C2D]/80 italic">amazon</span>
+              <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-[#0B3C2D]/80">Deloitte.</span>
+              <span className="text-xl md:text-2xl font-medium font-sans tracking-tight text-[#0B3C2D]/80">Infosys</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -291,7 +331,7 @@ export default function HomePage() {
               href="/about"
               className="inline-flex items-center text-sm font-bold text-[#0B3C2D] hover:text-[#D98A2B] transition-colors group"
             >
-              Read about Nikunj's Counseling Philosophy
+              Read My Counseling Philosophy
               <ArrowRight className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -468,7 +508,7 @@ export default function HomePage() {
               <div className="pt-8 mt-6 border-t border-[#0B3C2D]/10">
                 <Link
                   href="/services/relationship-repair"
-                  className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors shadow-md glow-btn"
+                  className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors shadow-md"
                 >
                   View Relationship Program
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -750,7 +790,7 @@ export default function HomePage() {
                 "Every family holds the capacity for calm — sometimes it just takes an outside lens."
               </h2>
               <p className="text-sm sm:text-base text-ink-muted leading-relaxed">
-                Over the past 6 years, Nikunj has sat across hundreds of parents, couples, and corporate leaders navigating high-stakes emotional challenges. His approach combines evidence-based behavioral coaching with warmth, specificity, and absolute confidentiality.
+                Over the past 6 years, I have sat across hundreds of parents, couples, and corporate leaders navigating high-stakes emotional challenges. My approach combines evidence-based behavioral coaching with warmth, specificity, and absolute confidentiality.
               </p>
 
               <div className="pt-2">
@@ -758,7 +798,7 @@ export default function HomePage() {
                   href="/about"
                   className="inline-flex items-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm transition-colors"
                 >
-                  Read Nikunj's Story & Background
+                  Read My Story & Background
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </div>
@@ -920,7 +960,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
               href="/contact#booking"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-base shadow-xl transition-all glow-btn"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-base shadow-xl transition-all"
             >
               <PhoneCall className="w-5 h-5 mr-2" />
               Book a Confidential Session
@@ -932,7 +972,14 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 rounded-full border border-[#8CA899]/40 text-white hover:bg-white/10 font-semibold text-base transition-colors"
             >
-              <MessageCircle className="w-5 h-5 mr-2 text-[#25D366]" />
+              <svg
+                viewBox="0 0 24 24"
+                className="w-5 h-5 fill-[#25D366] mr-2 shrink-0"
+                aria-hidden="true"
+              >
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.553 4.11 1.519 5.84L.055 23.515l5.849-1.503A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.945 9.945 0 01-5.078-1.39l-.364-.216-3.465.89.916-3.376-.237-.377A9.947 9.947 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
               Chat on WhatsApp
             </a>
           </div>

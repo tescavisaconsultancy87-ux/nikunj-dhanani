@@ -61,7 +61,7 @@ export default function ParentingCoachingPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
                 href="/contact?service=Parenting%20Coaching#booking"
-                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-md transition-all glow-btn"
+                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-md transition-all"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Book Parenting Session
@@ -193,7 +193,7 @@ export default function ParentingCoachingPage() {
           </h3>
           <Link
             href="/contact?service=Parenting%20Coaching#booking"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-lg transition-all glow-btn"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-lg transition-all"
           >
             Book Your Parenting Session
             <ArrowRight className="w-4 h-4 ml-2" />

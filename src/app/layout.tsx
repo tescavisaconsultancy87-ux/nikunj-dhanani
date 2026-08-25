@@ -59,9 +59,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${caveat.variable} ${alexBrush.variable} scroll-smooth`}
+      className={`${inter.variable} ${fraunces.variable} ${caveat.variable} ${alexBrush.variable} scroll-smooth bg-[#F8F4EE] overflow-x-hidden`}
     >
-      <body className="flex flex-col min-h-screen bg-warm-linen text-ink-navy selection:bg-dusty-sky/30">
+      <body className="flex flex-col min-h-screen bg-[#F8F4EE] text-ink-navy selection:bg-dusty-sky/30 overflow-x-hidden w-full max-w-full">
         <MainLayoutWrapper>{children}</MainLayoutWrapper>
       </body>
     </html>

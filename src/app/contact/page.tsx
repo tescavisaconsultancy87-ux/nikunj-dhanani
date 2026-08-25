@@ -72,7 +72,7 @@ function ContactBookingContent() {
               Book Your Confidential Counseling Session
             </h1>
             <p className="text-base text-ink-muted leading-relaxed">
-              Choose your preferred date, time slot, and session focus. Every session is conducted directly by Nikunj Dhanani with 100% privacy.
+              Choose your preferred date, time slot, and session focus. Every session is conducted directly by me with 100% privacy.
             </p>
           </div>
         </ScrollReveal>
@@ -128,7 +128,7 @@ function ContactBookingContent() {
                     <span>100% Confidential & Private Care</span>
                   </div>
                   <p className="text-[11px] text-ink-muted">
-                    No third-party platforms or shared data. All communications remain strictly between you and Nikunj.
+                    No third-party platforms or shared data. All communications remain strictly between you and me.
                   </p>
                 </div>
 
@@ -269,7 +269,7 @@ function ContactBookingContent() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm transition-all shadow-lg glow-btn"
+                    className="w-full py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm transition-all shadow-lg"
                   >
                     {isSubmitting ? "Processing Reservation..." : "Confirm & Reserve Time Slot"}
                   </button>

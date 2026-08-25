@@ -49,12 +49,21 @@
   --stat-bg: #FFFDF9;
 }
 
+html {
+  background-color: #F8F4EE;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
+  background-color: #F8F4EE;
   color: var(--foreground);
   font-family: var(--font-sans);
+  max-width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {

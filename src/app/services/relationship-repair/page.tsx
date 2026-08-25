@@ -33,8 +33,8 @@ export default function RelationshipRepairPage() {
   ];
 
   const couplesFaqs = [
-    { q: "What if my spouse is reluctant to join counseling?", a: "Nikunj offers initial 1-on-1 prep sessions for one partner to learn communication tools that often positively shift the relationship dynamic." },
-    { q: "Does the counselor take sides during arguments?", a: "Never. Nikunj remains completely neutral, focusing entirely on diagnosing and repairing the interaction pattern between partners." },
+    { q: "What if my spouse is reluctant to join counseling?", a: "I offer initial 1-on-1 prep sessions for one partner to learn communication tools that often positively shift the relationship dynamic." },
+    { q: "Does the counselor take sides during arguments?", a: "Never. I remain completely neutral, focusing entirely on diagnosing and repairing the interaction pattern between partners." },
     { q: "Are sessions online or in-person for couples?", a: "Both options are available. Online sessions are conducted via secure private video links, allowing flexible scheduling for busy couples." },
   ];
 
@@ -61,7 +61,7 @@ export default function RelationshipRepairPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
                 href="/contact?service=Relationship%20Repair#booking"
-                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-md transition-all glow-btn"
+                className="inline-flex items-center px-7 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-md transition-all"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Book Couples Session
@@ -194,7 +194,7 @@ export default function RelationshipRepairPage() {
           </h3>
           <Link
             href="/contact?service=Relationship%20Repair#booking"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-lg transition-all glow-btn"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-lg transition-all"
           >
             Book Your Relationship Session
             <ArrowRight className="w-4 h-4 ml-2" />

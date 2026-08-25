@@ -128,7 +128,7 @@ export default function ResourcesPage() {
               Articles & Guides on Family Calm & Stress Relief
             </h1>
             <p className="text-base text-ink-muted leading-relaxed">
-              Practical, evidence-based insights and downloadable resource booklets created by Nikunj Dhanani.
+              Practical, evidence-based insights and downloadable resource booklets created by me.
             </p>
           </div>
         </ScrollReveal>

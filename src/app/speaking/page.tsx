@@ -102,13 +102,13 @@ export default function SpeakingPage() {
               </h1>
 
               <p className="text-base text-ink-muted leading-relaxed">
-                Nikunj Dhanani delivers engaging, evidence-based keynotes and interactive workshops for corporate leadership teams, educational institutions, and community organizations.
+                I deliver engaging, evidence-based keynotes and interactive workshops for corporate leadership teams, educational institutions, and community organizations.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <a
                   href="#booking-form"
-                  className="px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs shadow-md transition-colors inline-flex items-center"
+                  className="px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs shadow-md transition-colors inline-flex items-center"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Request Speaking Engagement
@@ -192,7 +192,7 @@ export default function SpeakingPage() {
                   <div className="pt-4 border-t border-[#0B3C2D]/10">
                     <button
                       onClick={() => setSelectedTopic(talk.title)}
-                      className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors glow-btn"
+                      className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors"
                     >
                       Request This Keynote
                       <ArrowRight className="w-4 h-4 ml-2" />

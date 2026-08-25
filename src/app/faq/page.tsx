@@ -10,12 +10,12 @@ const faqs = [
   {
     category: "Format & Logistics",
     question: "What is the format of counseling sessions? Are they online or in-person?",
-    answer: "Sessions are available both in-person at Nikunj's Mumbai practice and online nationwide via secure video calls (Zoom/Google Meet). Both formats offer the exact same level of privacy, structure, and 1-on-1 dedicated care.",
+    answer: "Sessions are available both in-person at my practice and online nationwide via secure video calls (Zoom/Google Meet). Both formats offer the exact same level of privacy, structure, and 1-on-1 dedicated care.",
   },
   {
     category: "General",
     question: "What languages are counseling sessions conducted in?",
-    answer: "Nikunj conducts sessions fluently in English, Hindi, and Gujarati based on your personal comfort and family preference.",
+    answer: "I conduct sessions fluently in English, Hindi, and Gujarati based on your personal comfort and family preference.",
   },
   {
     category: "Confidentiality & Ethics",
@@ -25,7 +25,7 @@ const faqs = [
   {
     category: "General",
     question: "What can I expect during my very first session?",
-    answer: "Session 1 is an intake & goal-definition session. Nikunj will listen to your current situation, map primary stress points or relational triggers, and co-create an initial 4-session action plan.",
+    answer: "Session 1 is an intake & goal-definition session. I will listen to your current situation, map primary stress points or relational triggers, and co-create an initial 4-session action plan.",
   },
   {
     category: "Payments & Pricing",
@@ -45,7 +45,7 @@ const faqs = [
   {
     category: "Confidentiality & Ethics",
     question: "What should I do if I or a family member am in an immediate crisis?",
-    answer: "Nikunj Dhanani Counseling provides scheduled therapy and coaching. If you are experiencing a mental health emergency or immediate danger, please reach out to national emergency helplines immediately (Tele-MANAS: 14416 | Vandrevala Foundation: +91 9999 666 555).",
+    answer: "My counseling practice provides scheduled therapy and coaching. If you are experiencing a mental health emergency or immediate danger, please reach out to national emergency helplines immediately (Tele-MANAS: 14416 | Vandrevala Foundation: +91 9999 666 555).",
   },
   {
     category: "Format & Logistics",
@@ -55,12 +55,12 @@ const faqs = [
   {
     category: "General",
     question: "Is counseling suitable for executive burnout or work stress?",
-    answer: "Absolutely. Executive stress, decision fatigue, and career burnout are primary core specialties of Nikunj's 1-on-1 counseling practice.",
+    answer: "Absolutely. Executive stress, decision fatigue, and career burnout are primary core specialties of my 1-on-1 counseling practice.",
   },
   {
     category: "Confidentiality & Ethics",
     question: "Are session notes kept securely?",
-    answer: "Yes, all clinical notes are encrypted, password-protected, and strictly accessible only by Nikunj Dhanani.",
+    answer: "Yes, all clinical notes are encrypted, password-protected, and strictly accessible only by me.",
   },
   {
     category: "Payments & Pricing",
@@ -102,7 +102,7 @@ export default function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-base text-ink-muted leading-relaxed max-w-2xl mx-auto">
-              Everything you need to know about booking sessions, confidentiality, pricing, and what to expect during your counseling journey with Nikunj.
+              Everything you need to know about booking sessions, confidentiality, pricing, and what to expect during your counseling journey with me.
             </p>
           </div>
         </ScrollReveal>
@@ -181,12 +181,12 @@ export default function FAQPage() {
               Have a specific question not listed here?
             </h3>
             <p className="text-xs text-ink-muted">
-              Nikunj is happy to answer quick inquiries over WhatsApp or via our booking page.
+              I am happy to answer quick inquiries over WhatsApp or via our booking page.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <Link
                 href="/contact#booking"
-                className="inline-flex items-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors shadow-md glow-btn"
+                className="inline-flex items-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors shadow-md"
               >
                 <PhoneCall className="w-4 h-4 mr-2" />
                 Book a Session
@@ -197,7 +197,14 @@ export default function FAQPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 rounded-full border border-[#0B3C2D]/20 text-[#0B3C2D] hover:bg-[#F8F4EE] text-xs font-bold transition-colors"
               >
-                <MessageCircle className="w-4 h-4 mr-2 text-[#25D366]" />
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4 fill-[#25D366] mr-2 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.553 4.11 1.519 5.84L.055 23.515l5.849-1.503A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.945 9.945 0 01-5.078-1.39l-.364-.216-3.465.89.916-3.376-.237-.377A9.947 9.947 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
                 Ask on WhatsApp
               </a>
             </div>

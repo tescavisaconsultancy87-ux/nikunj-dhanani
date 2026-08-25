@@ -46,7 +46,7 @@ export default function Footer() {
                 <Link href="/services" className="hover:text-white transition-colors">Counseling Services</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition-colors">About Nikunj</Link>
+                <Link href="/about" className="hover:text-white transition-colors">About Me</Link>
               </li>
               <li>
                 <Link href="/speaking" className="hover:text-white transition-colors">Keynote Speaking</Link>

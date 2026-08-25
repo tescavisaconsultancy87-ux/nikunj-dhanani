@@ -585,17 +585,17 @@ export default function StressQuizModal({ isOpen, onClose }: StressQuizModalProp
 
     const localizedDesc: Record<string, Record<QuizLanguage, string>> = {
       parenting: {
-        en: "Your responses indicate parenting friction, child behavior stress, or family disconnect. Guided 1-on-1 sessions with Nikunj Dhanani will equip you with calm routine structures, behavioral scripts, and peaceful home frameworks.",
+        en: "Your responses indicate parenting friction, child behavior stress, or family disconnect. Guided 1-on-1 sessions with me will equip you with calm routine structures, behavioral scripts, and peaceful home frameworks.",
         hi: "आपके उत्तर बच्चों के पालन-पोषण में तनाव और पारिवारिक मतभेद दर्शाते हैं। निकुंज धानाणी के साथ 1-ऑन-1 परामर्श से आपको शांत दिनचर्या, बच्चों से बातचीत के तरीके और पारिवारिक शांति के उपाय मिलेंगे।",
         gu: "તમારા જવાબો બાળકોના પાલન-પોષણમાં તણાવ અને કૌટુંબિક મતભેદ દર્શાવે છે. નિકુંજ ધાનાણી સાથે 1-ઓન-1 માર્ગદર્શનથી તમને શાંત દિનચર્યા, બાળકો સાથે વાતચીતના રસ્તા અને કૌટુંબિક શાંતિ મળશે।",
       },
       relationship: {
-        en: "Your assessment highlights misaligned communication cycles or emotional distance with your spouse. Nikunj's structured couples framework helps break repetitive arguments and rebuild mutual warmth, trust, and intimacy.",
+        en: "Your assessment highlights misaligned communication cycles or emotional distance with your spouse. My structured couples framework helps break repetitive arguments and rebuild mutual warmth, trust, and intimacy.",
         hi: "आपके उत्तर जीवनसाथी के साथ बातचीत की कमी और भावनात्मक दूरी दर्शाते हैं। निकुंज धानाणी का विशेष ढांचा बार-बार के झगड़ों को रोककर आपसी प्यार और विश्वास दोबारा कायम करने में मदद करता है।",
         gu: "તમારા જવાબો જીવનસાથી સાથે વાતચીતનો અભાવ અને અંતર દર્શાવે છે. નિકુંજ ધાનાણીનું વિશેષ માળખું વારંવારના ઝઘડા અટકાવીને પરસ્પર પ્રેમ અને વિશ્વાસ ફરી બનાવવામાં મદદ કરે છે.",
       },
       burnout: {
-        en: "Your answers indicate executive decision fatigue, work-to-home stress leakage, or personal anxiety. 1-on-1 coaching with Nikunj provides evidence-based stress regulation tools to safeguard your mental peace and clarity.",
+        en: "Your answers indicate executive decision fatigue, work-to-home stress leakage, or personal anxiety. 1-on-1 coaching with me provides evidence-based stress regulation tools to safeguard your mental peace and clarity.",
         hi: "आपका मूल्यांकन कार्यस्थल के तनाव, अनिद्रा या मानसिक थकान को दर्शाता है। 1-ऑन-1 परामर्श आपको मानसिक शांति, कार्य-जीवन संतुलन और निर्णय लेने की स्पष्टता प्रदान करता है।",
         gu: "તમારું મૂલ્યાંકન કામનો તણાવ, અનિદ્રા અથવા માનસિક થાક દર્શાવે છે. 1-ઓન-1 માર્ગદર્શન તમને માનસિક શાંતિ, કાર્ય-જીવન સંતુલન અને નિર્ણય લેવાની સ્પષ્ટતા આપે છે.",
       },
@@ -978,13 +978,13 @@ export default function StressQuizModal({ isOpen, onClose }: StressQuizModalProp
                   className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs transition-all shadow-md"
                 >
                   <MessageSquare className="w-4 h-4 mr-1.5" />
-                  {currentLanguage === "hi" ? "व्हाट्सएप पर बात करें" : currentLanguage === "gu" ? "વોટ્સએપ પર વાત કરો" : "Send Report to Nikunj on WhatsApp"}
+                  {currentLanguage === "hi" ? "व्हाट्सएप पर बात करें" : currentLanguage === "gu" ? "વોટ્સએપ પર વાત કરો" : "Send Report to Me on WhatsApp"}
                 </a>
 
                 <Link
                   href={`/contact?service=${encodeURIComponent(recResult.param)}&name=${encodeURIComponent(leadForm.name)}&phone=${encodeURIComponent(cleanPhone)}#booking`}
                   onClick={onClose}
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#C97B5B] hover:bg-[#BD5C3D] text-white font-bold text-xs transition-all shadow-md glow-btn"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-all shadow-md"
                 >
                   {currentLanguage === "hi" ? "अपॉइंटमेंट बुक करें" : currentLanguage === "gu" ? "સત્ર બુક કરો" : `Book 1-on-1 Session`}
                   <ArrowRight className="w-4 h-4 ml-1.5" />

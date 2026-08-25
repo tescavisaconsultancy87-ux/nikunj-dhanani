@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "About Nikunj Dhanani | Family Counselor & Life Coach",
-  description: "Learn about Nikunj Dhanani's 6+ years of evidence-based counseling practice in Mumbai, counseling philosophy, credentials, and trauma-informed care background.",
+  description: "Learn about my 6+ years of evidence-based counseling practice, counseling philosophy, credentials, and trauma-informed care background.",
 };
 
 export default function AboutPage() {
@@ -75,10 +75,10 @@ export default function AboutPage() {
                 Grounding families in calm through evidence-based, human care.
               </h2>
               <p className="text-sm text-ink-muted leading-relaxed">
-                Nikunj Dhanani is an independent family counselor, couples specialist, and public speaker based in Mumbai. Unlike multi-therapist clinic platforms, Nikunj works with every client directly, establishing deep continuity, specificity, and trust.
+                I am an independent family counselor, couples specialist, and public speaker. Unlike multi-therapist clinic platforms, I work with every client directly, establishing deep continuity, specificity, and trust.
               </p>
               <p className="text-sm text-ink-muted leading-relaxed">
-                His practice is rooted in the belief that emotional conflict is not a sign of failure — it is a signal that existing coping structures need updating.
+                My practice is rooted in the belief that emotional conflict is not a sign of failure — it is a signal that existing coping structures need updating.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
               "You don't need to be fixed. You need to be heard, understood, and equipped with clear, practical tools for your daily life."
             </blockquote>
             <span className="text-xs font-bold uppercase tracking-widest text-[#D98A2B] block pt-2">
-              — Nikunj Dhanani's Counseling Ethos
+              — My Counseling Ethos
             </span>
           </div>
         </ScrollReveal>
@@ -167,11 +167,11 @@ export default function AboutPage() {
         {/* CTA */}
         <div className="text-center space-y-4 pt-4">
           <h3 className="text-2xl font-serif-display font-bold text-[#0B3C2D]">
-            Work directly with Nikunj
+            Work directly with me
           </h3>
           <Link
             href="/contact#booking"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-sm shadow-lg transition-all glow-btn"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-sm shadow-lg transition-all"
           >
             <Calendar className="w-4 h-4 mr-2" />
             Book a Confidential Session

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, PhoneCall, ChevronDown } from "lucide-react";
+import { Menu, X, PhoneCall, ChevronDown, Calendar } from "lucide-react";
 import LeafMotif from "@/components/LeafMotif";
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 max-w-full ${
         isScrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-[#0B3C2D]/10" : "bg-[#F8F4EE] py-4 border-b border-[#0B3C2D]/10"
       }`}
     >
@@ -123,9 +123,9 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/contact#booking"
-              className="inline-flex items-center px-5 py-2.5 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white text-sm font-semibold transition-all duration-200 shadow-md hover-lift glow-btn"
+              className="inline-flex items-center px-5 py-2.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white text-sm font-semibold transition-all duration-200 shadow-md hover-lift"
             >
-              <PhoneCall className="w-4 h-4 mr-2" />
+              <Calendar className="w-4 h-4 mr-2 text-[#D98A2B]" />
               Book a Session
             </Link>
           </div>
@@ -181,7 +181,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-base font-bold text-[#0B3C2D] hover:text-[#D98A2B]"
               >
-                About Nikunj
+                About Me
               </Link>
               <Link
                 href="/speaking"
@@ -207,9 +207,9 @@ export default function Header() {
               <Link
                 href="/contact#booking"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-full bg-[#D98A2B] text-white text-base font-bold shadow-md glow-btn mt-3"
+                className="inline-flex items-center justify-center px-5 py-3.5 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white text-base font-bold shadow-md mt-3"
               >
-                <PhoneCall className="w-4 h-4 mr-2" />
+                <Calendar className="w-4 h-4 mr-2 text-[#D98A2B]" />
                 Book a Session
               </Link>
             </nav>

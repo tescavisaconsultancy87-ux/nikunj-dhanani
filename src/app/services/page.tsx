@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata = {
   title: "Counseling Services | N. Dhanani",
-  description: "Explore individual counseling, couples relationship repair, and parenting coaching sessions guided by Nikunj Dhanani in Mumbai and online across India.",
+  description: "Explore individual counseling, couples relationship repair, and parenting coaching sessions guided directly by me in Mumbai and online across India.",
 };
 
 export default function ServicesHubPage() {
@@ -24,7 +24,7 @@ export default function ServicesHubPage() {
               Structured Counseling for Family, Relationship & Personal Calm
             </h1>
             <p className="text-base text-ink-muted leading-relaxed">
-              Every offering is conducted directly by Nikunj Dhanani with personalized session notes, actionable coping frameworks, and complete confidentiality.
+              Every offering is conducted directly by me with personalized session notes, actionable coping frameworks, and complete confidentiality.
             </p>
           </div>
         </ScrollReveal>
@@ -68,7 +68,7 @@ export default function ServicesHubPage() {
                   </Link>
                   <Link
                     href="/contact?service=Parenting%20Coaching#booking"
-                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors glow-btn"
+                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors shadow-md"
                   >
                     Book Parenting Session
                   </Link>
@@ -161,7 +161,7 @@ export default function ServicesHubPage() {
                   </Link>
                   <Link
                     href="/contact?service=Relationship%20Repair#booking"
-                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors glow-btn"
+                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors shadow-md"
                   >
                     Book Couples Session
                   </Link>
@@ -206,7 +206,7 @@ export default function ServicesHubPage() {
                   </Link>
                   <Link
                     href="/contact?service=Counselling%20%26%20Life%20Coaching#booking"
-                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#D98A2B] hover:bg-[#bd7522] text-white font-bold text-xs transition-colors glow-btn"
+                    className="inline-flex items-center px-6 py-3 rounded-full bg-[#0B3C2D] hover:bg-[#07291f] text-white font-bold text-xs transition-colors shadow-md"
                   >
                     Book Individual Session
                   </Link>
@@ -249,7 +249,7 @@ export default function ServicesHubPage() {
                 Practice Standards
               </span>
               <h2 className="text-2xl font-serif-display font-bold text-[#0B3C2D]">
-                What Makes Nikunj's Counseling Unique
+                What Makes My Counseling Unique
               </h2>
             </div>
 
@@ -258,7 +258,7 @@ export default function ServicesHubPage() {
                 <Sparkles className="w-6 h-6 text-[#D98A2B]" />
                 <h4 className="text-sm font-bold text-[#0B3C2D]">Direct Practitioner Connection</h4>
                 <p className="text-xs text-ink-muted">
-                  You work directly with Nikunj in every session — no junior associates, rotating counselors, or automated app matching.
+                  You work directly with me in every session — no junior associates, rotating counselors, or automated app matching.
                 </p>
               </div>
 

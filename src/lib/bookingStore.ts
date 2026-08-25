@@ -11,27 +11,8 @@ export interface BookingRecord {
   createdAt: string;
 }
 
-// In-memory cache for fast node runtime access
-let memoryBookings: BookingRecord[] = [
-  {
-    _id: "demo-lead-1",
-    name: "Priya Patel",
-    email: "priya.patel@gmail.com",
-    phone: "+91 98251 44321",
-    serviceType: "Parenting Coaching",
-    message: "Need help managing bedtime anxiety and routine friction with our 8-year-old child.",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
-  },
-  {
-    _id: "demo-lead-2",
-    name: "Siddharth Mehta",
-    email: "siddharth.m@outlook.com",
-    phone: "+91 99099 88123",
-    serviceType: "Relationship Repair",
-    message: "Inquiring about joint couples counseling session for communication & trust building.",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-  },
-];
+// Memory cache initialized with zero mock data
+let memoryBookings: BookingRecord[] = [];
 
 const getFilePath = () => {
   return path.join(process.cwd(), "src", "data", "bookings_store.json");
@@ -46,7 +27,7 @@ const ensureFileExists = () => {
     }
     const filePath = getFilePath();
     if (!fs.existsSync(filePath)) {
-      fs.writeFileSync(filePath, JSON.stringify(memoryBookings, null, 2), "utf-8");
+      fs.writeFileSync(filePath, JSON.stringify([], null, 2), "utf-8");
     }
   } catch (err) {
     console.log("[BookingStore] File system access warning:", err);
@@ -60,8 +41,9 @@ export const getLocalBookings = (): BookingRecord[] => {
     if (fs.existsSync(filePath)) {
       const fileData = fs.readFileSync(filePath, "utf-8");
       const parsed = JSON.parse(fileData);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        memoryBookings = parsed;
+      if (Array.isArray(parsed)) {
+        // Exclude legacy demo items
+        memoryBookings = parsed.filter((b: any) => !b._id?.startsWith("demo-lead-"));
       }
     }
   } catch (err) {
@@ -72,10 +54,7 @@ export const getLocalBookings = (): BookingRecord[] => {
 
 export const saveLocalBooking = (record: BookingRecord): BookingRecord => {
   try {
-    // Add to memory
     memoryBookings = [record, ...memoryBookings.filter((b) => b._id !== record._id)];
-    
-    // Save to local JSON file
     ensureFileExists();
     const filePath = getFilePath();
     fs.writeFileSync(filePath, JSON.stringify(memoryBookings, null, 2), "utf-8");

@@ -1,15 +1,17 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-export interface IBooking extends Document {
+export interface IBooking {
+  _id?: string;
   name: string;
   email: string;
   phone: string;
   serviceType: string;
   message: string;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 const BookingSchema: Schema = new Schema({
+  _id: { type: String },
   name: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String, required: true },

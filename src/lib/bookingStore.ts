@@ -11,14 +11,12 @@ export interface BookingRecord {
   createdAt: string;
 }
 
-// Memory cache initialized with zero mock data
 let memoryBookings: BookingRecord[] = [];
 
 const getFilePath = () => {
   return path.join(process.cwd(), "src", "data", "bookings_store.json");
 };
 
-// Ensure directory and file exist
 const ensureFileExists = () => {
   try {
     const dirPath = path.join(process.cwd(), "src", "data");
@@ -42,7 +40,6 @@ export const getLocalBookings = (): BookingRecord[] => {
       const fileData = fs.readFileSync(filePath, "utf-8");
       const parsed = JSON.parse(fileData);
       if (Array.isArray(parsed)) {
-        // Exclude legacy demo items
         memoryBookings = parsed.filter((b: any) => !b._id?.startsWith("demo-lead-"));
       }
     }
@@ -64,9 +61,16 @@ export const saveLocalBooking = (record: BookingRecord): BookingRecord => {
   return record;
 };
 
-export const deleteLocalBooking = (id: string): boolean => {
+export const deleteLocalBooking = (idOrMatch: string): boolean => {
   try {
-    memoryBookings = memoryBookings.filter((b) => b._id !== id);
+    memoryBookings = getLocalBookings();
+    memoryBookings = memoryBookings.filter(
+      (b) =>
+        b._id !== idOrMatch &&
+        b.phone !== idOrMatch &&
+        b.email !== idOrMatch &&
+        b.name !== idOrMatch
+    );
     ensureFileExists();
     const filePath = getFilePath();
     fs.writeFileSync(filePath, JSON.stringify(memoryBookings, null, 2), "utf-8");
